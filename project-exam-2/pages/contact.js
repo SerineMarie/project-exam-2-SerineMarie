@@ -1,32 +1,35 @@
 import { BASE_URL } from '../constans/api';
 import axios from "axios";
-import Navigation from '../components/navigation/navigation';
+import Layout from '../components/layout/Layout';
+import Heading from '../components/heading/Heading';
+import Head from '../components/head/Head';
 
 
-export default function Home(props) {
+export default function Contact(props) {
   console.log(props)
   return (
-    <Navigation>
-      <div className='wrapper'></div>
-    </Navigation>
+    <Layout>
+      <Head title={props.contactpage.data.attributes.title}/>
+      <Heading title={props.contactpage.data.attributes.title}/>
+    </Layout>
   )
 }
 
 
 export async function getStaticProps(){
-  const homeApi = BASE_URL + "homepage?populate=*";
-  let home = []
+  const contactApi = BASE_URL + "contactpage";
+  let contactpage = [] ;
 
   try {
-    const response = await axios.get(homeApi)
+    const response = await axios.get(contactApi)
     console.log(response.data);
-    home = response.data
+    contactpage = response.data;
   } catch(error){
     console.log(error)
   }
   return {
     props: {
-      home: home,
+      contactpage: contactpage,
     }
   }
 }

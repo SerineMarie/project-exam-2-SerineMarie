@@ -1,0 +1,27 @@
+.title {
+  font-family: "Anek Odia", sans-serif;
+  font-weight: 300;
+  color: #0016ff;
+}
+
+.cardContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.cardContainer .card {
+  border: solid 1px black;
+  border-radius: 15px;
+  margin: 0 1rem 0 1rem;
+  padding: 1rem;
+}
+
+.infocard {
+  width: 35%;
+  border: solid 1px black;
+  border-radius: 15px;
+  margin: 0 1rem 1rem 1rem;
+  padding: 1rem;
+}
+/*# sourceMappingURL=Home.module.css.map */

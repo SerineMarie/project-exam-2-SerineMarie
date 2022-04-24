@@ -1,0 +1,31 @@
+$primary: #0016ff;;
+$cta-color: #ffcb0d;
+$gray: #707070;
+$black: black;
+$error: #ff530d;
+
+$primary-font: "Anek Odia", sans-serif;
+
+.title {
+    font-family: $primary-font;
+    font-weight: 300;
+    color: $primary;
+}
+
+.cardContainer {
+    display: flex;
+    .card {
+        border: solid 1px $black;
+        border-radius: 15px;
+        margin: 0 1rem 0 1rem;
+        padding: 1rem;
+    }
+}
+
+.infocard {
+    width: 35%;
+    border: solid 1px $black;
+    border-radius: 15px;
+    margin: 0 1rem 1rem 1rem;
+    padding: 1rem;
+}

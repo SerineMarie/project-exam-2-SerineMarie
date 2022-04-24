@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navigation({children}){
+export default function Layout({children}){
     return (
         <>
             <nav>
@@ -15,6 +15,7 @@ export default function Navigation({children}){
                 </Link>
                 <p>SEARCH FIELD</p>
             </nav>
+            {children}
         </>
     )
 }
