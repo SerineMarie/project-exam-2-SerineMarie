@@ -1,0 +1,47 @@
+.cardContainer {
+    display: flex;
+    .card{
+        border: solid 1px getColor(black);
+        border-radius: 5px;
+        margin: 0 1rem 0 1rem;
+        padding: 1rem;
+        background: getColor(whiteOpacity);
+    }
+}
+
+.infocard {
+    width: 35%;
+    border: solid 1px getColor(black);
+    border-radius: 5px;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    background: getColor(whiteOpacity);
+}
+
+.infoBtn{
+    border: 2px solid getColor(primary);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: .9rem;
+    background: none;
+}
+
+.section {
+    z-index: 1000;
+    position: sticky;
+    top: 15%;
+    bottom: 50%;
+    margin-left: 2%;
+}
+
+.card1 {
+    z-index: 1000;
+    position: sticky;
+    top: 30%;
+    // top: 15%;
+    // bottom: 50%;
+}
+
+.contentContainer{
+    margin-bottom: -1%;
+}

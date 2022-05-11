@@ -1,0 +1,15 @@
+$colors: (
+    primary: #0016ff,
+    cta-color: #ffcb0d,
+    white: #ffff,
+    whiteOpacity: rgba(255, 255, 255, .7),
+    gray: #707070,
+    black: #000000,
+    error: #ff530d,
+);
+
+@function getColor($color){
+    @return map-get($colors, $color);
+}
+
+$primary-font: "Anek Odia", sans-serif;

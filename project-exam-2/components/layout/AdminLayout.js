@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 import styles from "../../styles/Home.module.scss";
 import Logo from "../logo/logo";
 
-export default function Layout({children}){
+export default function AdminLayout({children}){
     const router = useRouter();
   
     return (
@@ -13,13 +13,15 @@ export default function Layout({children}){
                     <Link href="/">
                         <a className={styles.logo}><Logo/></a>
                     </Link>
-                    <Link href="/accomodations">
-                        <a className={router.pathname == "/accomodations" ? "active" : ""}>Accomodations</a>
+                    <Link href="/enquiries">
+                        <a className={router.pathname == "/enquiries" ? "active" : ""}>Enquiries</a>
                     </Link>
-                    <Link href="/contact">
-                        <a className={router.pathname == "/contact" ? "active" : ""}>Contact</a>
+                    <Link href="/messages">
+                        <a className={router.pathname == "/messages" ? "active" : ""}>Messages</a>
                     </Link>
-                    <input placeholder="Search" className={styles.search}/>
+                    <Link href="/newEst">
+                        <a className={router.pathname == "/newEst" ? "active" : ""}>New establishment</a>
+                    </Link>
                 </nav>
                 {children}
             </div>
@@ -29,8 +31,8 @@ export default function Layout({children}){
                     <p>Copyright 2022</p>
                 </div>
                 <div>
-                <Link href="adminLogin">
-                    <a>Admin</a>
+                <Link href="/">
+                    <a>Log out</a>
                 </Link>
                 </div>
             </footer>

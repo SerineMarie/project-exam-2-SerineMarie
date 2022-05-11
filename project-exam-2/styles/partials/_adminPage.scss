@@ -1,0 +1,12 @@
+.adminUl {
+    display: flex;
+    flex-direction: column;
+    a {
+        font-size: 1.3rem;
+        color: getColor(black);
+        text-decoration: none;  
+        margin: 1rem;
+        width: 20%;
+    }
+    
+}

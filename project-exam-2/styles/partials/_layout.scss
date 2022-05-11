@@ -1,0 +1,33 @@
+.nav {
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    a {
+        color: getColor(gray);
+        text-decoration: none;
+        &:hover{
+            color: getColor(primary);  
+        }
+    }
+}
+
+.active {
+    color: getColor(primary);
+}
+
+
+.footer {
+    flex-shrink: 0;
+    padding: .8rem;
+    background: getColor(primary);
+    color: getColor(white);
+    a {
+        text-decoration: none;
+        color: getColor(white);
+    }
+   
+}
+.footerDiv {
+    text-align: center;
+}

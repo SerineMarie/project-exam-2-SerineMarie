@@ -1,0 +1,39 @@
+.images{
+    grid-area: grid1;
+}
+
+.subTitle {
+    grid-area: grid2;
+}
+
+.location {
+    grid-area: grid3;
+}
+
+.excerpt {
+    grid-area: grid4;
+}
+
+.price{
+    grid-area: grid5;
+}
+
+.bookBtn{
+    grid-area: grid6;
+}
+
+.accomodationsCard {
+    border: 2px solid getColor(black);
+    border-radius: 5px;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
+    grid-template-rows: 12% 15% 50% 15%;
+    grid-template-areas: 
+    "grid1 grid2 grid2"
+    "grid1 grid3 grid3"
+    "grid1 grid4 grid4"
+    "grid1 grid5 grid6";
+}

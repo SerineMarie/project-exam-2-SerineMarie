@@ -1,7 +1,15 @@
 .title {
-  font-family: "Anek Odia", sans-serif;
+  font-weight: 500;
+  color: #0016ff;
+}
+
+.subTitle {
   font-weight: 300;
   color: #0016ff;
+}
+
+.bookingForm p {
+  font-size: 1.3rem;
 }
 
 .cardContainer {
@@ -11,17 +19,287 @@
 }
 
 .cardContainer .card {
-  border: solid 1px black;
-  border-radius: 15px;
+  border: solid 1px #000000;
+  border-radius: 5px;
   margin: 0 1rem 0 1rem;
   padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .infocard {
   width: 35%;
-  border: solid 1px black;
-  border-radius: 15px;
-  margin: 0 1rem 1rem 1rem;
+  border: solid 1px #000000;
+  border-radius: 5px;
+  margin: 0 0 1rem 0;
   padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.infoBtn {
+  border: 2px solid #0016ff;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: .9rem;
+  background: none;
+}
+
+.section {
+  z-index: 1000;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 15%;
+  bottom: 50%;
+  margin-left: 2%;
+}
+
+.card1 {
+  z-index: 1000;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30%;
+}
+
+.contentContainer {
+  margin-bottom: -1%;
+}
+
+.nav {
+  padding: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1.3rem;
+}
+
+.nav a {
+  color: #707070;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #0016ff;
+}
+
+.active {
+  color: #0016ff;
+}
+
+.footer {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding: .8rem;
+  background: #0016ff;
+  color: #ffff;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #ffff;
+}
+
+.footerDiv {
+  text-align: center;
+}
+
+.images {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 1;
+  grid-area: grid1;
+}
+
+.subTitle {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: grid2;
+}
+
+.location {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: grid3;
+}
+
+.excerpt {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: grid4;
+}
+
+.price {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: grid5;
+}
+
+.bookBtn {
+  -ms-grid-row: 4;
+  -ms-grid-column: 3;
+  grid-area: grid6;
+}
+
+.accomodationsCard {
+  border: 2px solid #000000;
+  border-radius: 5px;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  width: 75%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40% 20% 20% 20%;
+      grid-template-columns: 40% 20% 20% 20%;
+  -ms-grid-rows: 12% 15% 50% 15%;
+      grid-template-rows: 12% 15% 50% 15%;
+      grid-template-areas: "grid1 grid2 grid2" "grid1 grid3 grid3" "grid1 grid4 grid4" "grid1 grid5 grid6";
+}
+
+.formInput, .formMessage, .select {
+  border: 1px solid #707070;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  margin: 0 5rem 1rem 0;
+}
+
+.formInput:focus, .formMessage:focus, .select:focus {
+  border: 2px solid #0016ff;
+}
+
+.formMessage {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.fullname, .checkIn {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: input1;
+}
+
+.email, .checkOut {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: input2;
+}
+
+.subject, .howMany {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: input3;
+}
+
+.textarea {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: input4;
+}
+
+.submitBtn {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: input5;
+}
+
+.contactForm, .bookingForm {
+  display: -ms-grid;
+  display: grid;
+  margin: 0 0rem 0 1rem;
+  -ms-grid-columns: 30% 30%;
+      grid-template-columns: 30% 30%;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+}
+
+.contactForm {
+  row-gap: 1rem;
+      grid-template-areas: "input1 input2" "input3 ." "input4 input4" "input5 .";
+}
+
+.bookingForm {
+  row-gap: .5rem;
+      grid-template-areas: "input1 input2" "input3 ." "input4 ." "input5 .";
+}
+
+.formError {
+  color: #ff530d;
+  margin-top: -1%;
+  margin-bottom: 1rem;
+}
+
+.submitBtn {
+  border: 2px solid #0016ff;
+  border-radius: 5px;
+  padding: 1%;
+  background: #ffff;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.datePicker input {
+  padding: 1%;
+  font-size: 1rem;
+}
+
+.howMany select, .formMessage {
+  padding: 1%;
+  font-size: 1rem;
+}
+
+.bookBtn {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background: #ffcb0d;
+  padding: 5px;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.container {
+  margin: 0 0 0 1rem;
+}
+
+.images {
+  width: 90%;
+}
+
+.bgImage {
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  left: 0;
+}
+
+.bgImage2 {
+  width: 5508px;
+  height: 3098px;
+  background-repeat: no-repeat;
+}
+
+.adminUl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.adminUl a {
+  font-size: 1.3rem;
+  color: #000000;
+  text-decoration: none;
+  margin: 1rem;
+  width: 20%;
 }
 /*# sourceMappingURL=Home.module.css.map */
