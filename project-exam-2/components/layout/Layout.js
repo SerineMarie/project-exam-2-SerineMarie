@@ -2,6 +2,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 import styles from "../../styles/Home.module.scss";
 import Logo from "../logo/logo";
+import SearchBar from "../search/Search";
 
 export default function Layout({children}){
     const router = useRouter();
@@ -10,6 +11,7 @@ export default function Layout({children}){
         <>
             <div className="wrapper">
                 <nav className={styles.nav}>
+                    <ul>
                     <Link href="/">
                         <a className={styles.logo}><Logo/></a>
                     </Link>
@@ -18,8 +20,8 @@ export default function Layout({children}){
                     </Link>
                     <Link href="/contact">
                         <a className={router.pathname == "/contact" ? "active" : ""}>Contact</a>
-                    </Link>
-                    <input placeholder="Search" className={styles.search}/>
+                    </Link></ul>
+                    <SearchBar/>
                 </nav>
                 {children}
             </div>
