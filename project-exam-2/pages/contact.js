@@ -23,7 +23,7 @@ export default function Contact(props) {
 
 
 export async function getStaticProps(){
-  const contactApi = BASE_URL + "contactpage";
+  const contactApi = BASE_URL + "/contactpage";
   let contactpage = [] ;
 
   try {

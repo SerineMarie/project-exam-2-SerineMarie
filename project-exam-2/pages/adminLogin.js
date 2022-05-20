@@ -23,7 +23,7 @@ export default function AdminLogIn(props){
 
 
 export async function getStaticProps(){
-    const adminlogin = BASE_URL + "adminlogin";
+    const adminlogin = BASE_URL + "/adminlogin";
     let logInPage = [];
   
     try {

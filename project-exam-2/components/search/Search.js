@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.scss";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../constans/api";
 
-const searchAPI = BASE_URL + "hotels?populate=*";
+const searchAPI = BASE_URL + "/hotels?populate=*";
 
 export default function SearchBar(){
     const [searchHotel, setSearchHotel] = useState([]);
@@ -18,12 +18,10 @@ export default function SearchBar(){
       }
       loadHotels();
     }, [])
-    
     const onAlternativeEvent = (inputValue) => {
         setInputValue(inputValue);
         setAlternative([]);
     }
-
     const onChangeEvent = (inputValue) => {
         let matches = []
         if(inputValue.length > 0){
@@ -32,7 +30,6 @@ export default function SearchBar(){
                 return hotels.attributes.name.match(regex)
             })
         }
-        console.log("matches", matches)
         setAlternative(matches)
         setInputValue(inputValue)
     }
@@ -49,11 +46,18 @@ export default function SearchBar(){
                     },100)
                 }}>
             </input>
-            <div className={styles.alternativeContainer}>
+            <a className={styles.alternativeContainer}>
                 {alternative && alternative.map((alternative, i) => 
-                <div className={styles.searchResults} key={i} onClick={()=>onAlternativeEvent(alternative.attributes.name)}>{alternative.attributes.name}</div>
+                <div>
+                    <a href={`hotel/${alternative.attributes.slug}`} 
+                    className={styles.searchResults} 
+                    key={i} 
+                    onClick={()=>onAlternativeEvent(alternative.attributes.name)}>
+                        {alternative.attributes.name}
+                    </a>
+                </div>
                 )}
-            </div>
+            </a>
         </>
     )
 }

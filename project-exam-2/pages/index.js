@@ -46,7 +46,7 @@ export default function Home(props) {
 
 
 export async function getStaticProps(){
-  const homeApi = BASE_URL + "homepage?populate=*";
+  const homeApi = BASE_URL + "/homepage?populate=*";
   let content = [];
 
   try {

@@ -21,7 +21,7 @@ export default function Booking (props){
 }
 
 export async function getStaticProps(){
-    const bookingApi = BASE_URL + "booking"
+    const bookingApi = BASE_URL + "/booking"
     let bookingpage = [];
     try{
         const response = await axios.get(bookingApi);

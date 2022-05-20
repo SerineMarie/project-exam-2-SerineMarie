@@ -1,40 +1,36 @@
 import styles from "../styles/Home.module.scss";
-import { BASE_URL } from '../constans/api';
+import { BASE_URL } from "../constans/api";
 import axios from "axios";
 import Layout from '../components/layout/Layout';
 import Heading from '../components/heading/Heading';
 import Head from "../components/head/Head";
 import DisplayMessage from "../components/displayMessage/DisplayMessage";
 
-
-
-export default function Accomodations(props) {
-  console.log(props)
+export default function Accomodations(props){
   return (
     <Layout>
       <Head title="Accomodations"/>
       <div className={styles.container}>
         <Heading title="Accomodations"/>
-          {props.accomodations.data.map((hotel) => {
-            return (
-              <div key={hotel.id} href={`hotels/${hotel.slug}`} className={styles.accomodationsCard}>
-                <img src={hotel.attributes.images.data[0].attributes.url} className={styles.images}></img>
-                <h2 className={styles.subTitle} key={hotel.attributes.id}>{hotel.attributes.name}</h2>
-                <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
-                <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
-                <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
-                <button className={styles.bookBtn}>BOOK NOW</button>
-              </div>
-            );
-          })}
+        {props.accomodations.data.map((hotel)=>{
+          return(<a key={hotel.slug} href={`hotel/${hotel.attributes.slug}`} className={styles.accomodationsCard}>
+                    <img src={hotel.attributes.images.data[0].attributes.url} className={styles.images}></img>
+                    <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
+                    <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
+                    <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
+                    <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
+                    <button className={styles.bookBtn}>BOOK NOW</button>
+                  </a>
+                  
+          );
+        })}
       </div>
     </Layout>
   )
 }
 
-
 export async function getStaticProps(){
-  const accomodationsApi = BASE_URL + "hotels?populate=*";
+  const accomodationsApi = BASE_URL + "/hotels?populate=*";
   let accomodations = [];
 
   try {

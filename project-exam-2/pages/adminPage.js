@@ -33,7 +33,7 @@ export default function AdminLogIn(props){
 
 
 export async function getStaticProps(){
-    const admin = BASE_URL + "adminpage";
+    const admin = BASE_URL + "/adminpage";
     let adminPage = [];
   
     try {

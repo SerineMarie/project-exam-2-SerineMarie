@@ -39,8 +39,10 @@
 
 .searchResults {
     font-size: 1.1rem;
-    border-bottom: 2px solid getColor(gray);
     padding: 10px;
+    text-decoration: none;
+    color: getColor(black);
+    
 }
 
 .footer {

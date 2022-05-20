@@ -18,6 +18,7 @@ export default function LoginForm(){
     const [submitting, setSubmitting] = useState(false);
     const [loginError, setLoginError] = useState(null);
 
+
     const {
         register, 
         handleSubmit,
@@ -28,22 +29,64 @@ export default function LoginForm(){
 
     // const [auth, setAuth] = useContext(AuthContext);
 
+    // async function onSubmit(username, password){
+    //     setSubmitting(true);
+    //     setLoginError(null);
+
+    //     const data = JSON.stringify({identifier: username, password: password});
+    //     console.log(data)
+    //     const options = {
+    //         method: "POST",
+    //         body: data,
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     };
+    //     try {
+    //         const response = await fetch(url, options);
+    //         const json = await response.json();
+
+    //         if(json.user){
+    //             console.log("user", user);
+    //         }
+    //         console.log(json)
+    //     } catch(error){
+    //         console.log(error)
+    //     } finally {
+    //         setSubmitting(false)
+    //     }
+        
+    // }
+
     async function onSubmit(data){
         setSubmitting(true);
         setLoginError(null);
         console.log(data);
 
-        try{
-            const response = await axios.post(url, data);
-            console.log("response", response.data);
-            // setAuth(response.data)
-        } catch(error){
-            console.log("error", error);
-            setLoginError(error.toString())
-        } finally {
-            setSubmitting(false)
-        }
+        axios.post(url, {
+            identifier: data.email,
+            password:  data.password
+        })
+
+        .then(response => {
+            console.log("Logged in");
+            console.log("User", response.data.user);
+            console.log("Token", response.data.jwt)
+        })
+
+        // try{
+        //     const response = await axios.post(url, data);
+        //     console.log("response", response.data);
+        //     // setAuth(response.data)
+        // } catch(error){
+        //     console.log("error", error);
+        //     setLoginError(error.toString())
+        // } finally {
+        //     setSubmitting(false)
+        // }
     }
+
+
     // console.log(errors);
 
     return(
