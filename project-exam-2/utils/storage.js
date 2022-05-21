@@ -36,3 +36,4 @@ function getFromStorage(key) {
 
     return JSON.parse(value);
 }
+

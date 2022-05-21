@@ -4,21 +4,20 @@ import Head from "../../components/head/Head";
 import Heading from "../../components/heading/Heading";
 import Layout from "../../components/layout/Layout";
 
-
-export default function Accomodation({hotel}){
+export default function Accomodation({accomodation}){
     return (
         <Layout>
-            <Head title={hotel.attributes.name}/>
-            <Heading title={hotel.attributes.name}/>
+            <Head title={accomodation.attributes.name}/>
+            <Heading title={accomodation.attributes.name}/>
             <h1>Hello</h1>
         </Layout>
     );
 }
 
 export async function getStaticPaths(){
-    const hotelApi = BASE_URL + "/hotels?populate=*";
+    const hotelUrl= BASE_URL + "/hotels?populate=*";
     try{
-        const response = await axios.get(hotelApi);
+        const response = await axios.get(hotelUrl);
         console.log(response)
         const accomodations = response.data.data;
         const paths = accomodations.map((accomodations)=>({
@@ -35,7 +34,8 @@ export async function getStaticPaths(){
 }
 
 export async function getStaticProps({params}){
-    const url = `${hotelApi}/${params.slug}`;
+    const hotelApi = BASE_URL + "/hotels"; 
+    const url = `${hotelApi}?hotels=${params.slug}&populate=*`;
     let accomodation = null;
     try {
         const response = await axios.get(url);
@@ -47,4 +47,5 @@ export async function getStaticProps({params}){
     return {
         props: {accomodation: accomodation},
     }
+
 }

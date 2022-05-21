@@ -10,18 +10,20 @@ export default function AdminLayout({children}){
         <>
             <div className="wrapper">
                 <nav className={styles.nav}>
-                    <Link href="/">
-                        <a className={styles.logo}><Logo/></a>
-                    </Link>
-                    <Link href="/enquiries">
-                        <a className={router.pathname == "/enquiries" ? "active" : ""}>Enquiries</a>
-                    </Link>
-                    <Link href="/messages">
-                        <a className={router.pathname == "/messages" ? "active" : ""}>Messages</a>
-                    </Link>
-                    <Link href="/newEst">
-                        <a className={router.pathname == "/newEst" ? "active" : ""}>New establishment</a>
-                    </Link>
+                    <ul>
+                        <Link href="/">
+                            <a className={styles.logo}><Logo/></a>
+                        </Link>
+                        <Link href="/enquiries">
+                            <a className={router.pathname == "/enquiries" ? "active" : ""}>Enquiries</a>
+                        </Link>
+                        <Link href="/messages">
+                            <a className={router.pathname == "/messages" ? "active" : ""}>Messages</a>
+                        </Link>
+                        <Link href="/newEst">
+                            <a className={router.pathname == "/newEst" ? "active" : ""}>New establishment</a>
+                        </Link> 
+                    </ul>
                 </nav>
                 {children}
             </div>

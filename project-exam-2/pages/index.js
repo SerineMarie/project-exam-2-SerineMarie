@@ -1,5 +1,4 @@
 import styles from "../styles/Home.module.scss";
-import { useState } from "react";
 import { BASE_URL } from '../constans/api';
 import axios from "axios";
 import {useRouter} from "next/router";
@@ -10,8 +9,6 @@ import DisplayMessage from "../components/displayMessage/DisplayMessage";
 
 export default function Home(props) {
   console.log(props)
-
-  // const [filters, setFilters] = useState({s:``});
 
   const router = useRouter();
   return (

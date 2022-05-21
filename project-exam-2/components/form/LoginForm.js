@@ -34,18 +34,14 @@ export default function LoginForm(){
         console.log(data);
 
         axios.post(url, {
-            identifier: data.email,
+            identifier: data.username,
             password: data.password
         })
 
         .then(response => {
-            console.log("Logged in");
-            console.log("User", response.data.user);
-            console.log("Token", response.data.jwt);
-
             saveToken(response.data.jwt);
             saveUser(response.data.user);
-
+            location.href = "/adminPage";
         })
     }
 
@@ -58,7 +54,7 @@ export default function LoginForm(){
             </div>
             <div className={styles.password}>
                 <p>Password</p>
-                <input {...register("password")} placeholder="Password" className={styles.formInput}/>
+                <input {...register("password")} placeholder="Password" type="password" className={styles.formInput}/>
                 {errors.password && <span className={styles.formError}>{errors.password.message}</span>}
             </div>
             <button className={styles.loginBtn}>{submitting ? "Logging in.." : "Log in"}</button>

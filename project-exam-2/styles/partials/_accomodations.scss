@@ -1,3 +1,11 @@
+.accomodationsCard{
+    border: 2px solid getColor(black);
+    border-radius: 5px;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    width: 75%;
+}
+
 .images{
     grid-area: grid1;
 }
@@ -22,12 +30,9 @@
     grid-area: grid6;
 }
 
-.accomodationsCard {
-    border: 2px solid getColor(black);
-    border-radius: 5px;
-    margin: 0 0 1rem 0;
-    padding: 1rem;
-    width: 75%;
+.accomodationsContent {
+    text-decoration: none;
+    color: getColor(black);
     display: grid;
     grid-template-columns: 40% 20% 20% 20%;
     grid-template-rows: 12% 15% 50% 15%;
