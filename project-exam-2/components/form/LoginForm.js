@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../../styles/Home.module.scss";
 import { saveToken, saveUser } from "../../utils/storage";
 import { BASE_URL, TOKEN_PATH } from "../../constans/api";
-// import AuthContext from "../../context/AuthContext";
 
 const schema = yup.object().shape({
     username: yup.string().required("Please enter a username").min(3, "Are you sure you entered correct username?"),
@@ -61,5 +60,3 @@ export default function LoginForm(){
         </form>
     )
 }
-
-// export default LoginForm;

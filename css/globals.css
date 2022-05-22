@@ -9,7 +9,6 @@ body {
   margin: 0 auto;
   font-family: sans-serif;
   height: 100%;
-  background: #FAFAFA;
   font-family: "Anek Odia", sans-serif;
 }
 
@@ -17,6 +16,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+  background: rgba(0, 22, 255, 0.05);
 }
 
 #__next {
@@ -28,5 +28,11 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
+}
+
+@media (min-width: 821px) {
+  .wrapper {
+    background: #FAFAFA;
+  }
 }
 /*# sourceMappingURL=globals.css.map */

@@ -10,16 +10,24 @@ body {
   margin: 0 auto;
   font-family: sans-serif;
   height: 100%;
-  background: #FAFAFA;
   font-family: $primary-font;
 }
 
 .wrapper {
   flex: 1 0 auto;
+  background: getColor(primaryOpacity);
+
+
 }
 
 #__next {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+@media (min-width: 821px){
+.wrapper{
+    background: getColor(lightgray)
+  }
 }

@@ -62,7 +62,6 @@ function BookingForm(){
                         onChange={date => setEndDate(date)}
                     />
                 </div>
-            
             </div>
             <div className={styles.howMany}>
                 <p>Guest(s)</p>

@@ -14,7 +14,6 @@ export default function Home(props) {
   return (
     <Layout>
       <Head title={props.content.data.attributes.title}/>
-      <div className={styles.container}>
         <div className={styles.contentContainer}>
           <img src={props.content.data.attributes.images.data[1].attributes.url} className={styles.bgImage}></img>
           <section className={styles.section}>
@@ -26,21 +25,19 @@ export default function Home(props) {
           <div className={`${styles.cardContainer} ${styles.card1}`}>
             {props.content.data.attributes.hotels.data.map((shortcut) =>{
               return <section className={styles.card}>
-                  <a key={shortcut.id}>
-                    <h2 key={shortcut.attributes.id} className={styles.subTitle}>{shortcut.attributes.name}</h2>
-                    <p>{shortcut.attributes.excerpt}</p>
-                    <button className={styles.infoBtn}>Read more...</button>
-                  </a>
-                </section>
+                      <a key={shortcut.id}>
+                        <h2 key={shortcut.attributes.id} className={styles.subTitle}>{shortcut.attributes.name}</h2>
+                        <p>{shortcut.attributes.excerpt}</p>
+                        <button className={styles.infoBtn}>Read more...</button>
+                      </a>
+                    </section>
               })}
           </div>
           <img src={props.content.data.attributes.images.data[0].attributes.url} className={styles.bgImage}></img>
         </div>
-      </div>
     </Layout>
   )
 }
-
 
 export async function getStaticProps(){
   const homeApi = BASE_URL + "/homepage?populate=*";

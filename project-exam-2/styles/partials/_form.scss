@@ -1,84 +1,36 @@
+.contactForm,
+.bookingForm,
+.loginForm {
+    margin: auto;
+    width: 70%;
+    p {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+}
+
 .formInput, .formMessage, .select{
     border: 1px solid getColor(gray);
-    border-radius: 5px;
-    padding: 5px;
     width: 100%;
-    margin: 0 5rem 1rem 0;
+    border-radius: 5px;
+    padding: 2%;
+    margin-bottom: 5%;
     &:focus {
         border: 2px solid getColor(primary);
     }
 }
 
+.submitBtn, .loginBtn {
+    border: 2px solid getColor(primary);
+    border-radius: 5px;
+    padding: 2%;
+    width: 100%;
+    background: getColor(white);
+    text-transform: uppercase;
+    font-weight: 600;
+}
 .formMessage{
     box-sizing: border-box;
-}
-
-.fullname, 
-.checkIn, 
-.username {
-    grid-area: input1;
-}
-
-.email, 
-.checkOut, 
-.password {
-    grid-area: input2;
-}
-
-.subject, 
-.howMany, 
-.loginBtn {
-    grid-area: input3;
-}
-
-.textarea {
-    grid-area: input4;
-}
-
-.submitBtn {
-    grid-area: input5;
-}
-
-.contactForm, 
-.bookingForm, .loginForm {
-    display: grid;
-    margin: 0 0rem 0 1rem;
-    grid-template-columns: 30% 30%;
-    grid-template-rows: auto;
-    column-gap: 1rem;
-}
-
-.contactForm{
-    row-gap: 1rem;
-    grid-template-areas: 
-    "input1 input2"
-    "input3 ."
-    "input4 input4"
-    "input5 ."
-    ;
-}
-
-.bookingForm{
-    row-gap: .5rem;
-    grid-template-areas: 
-    "input1 input2"
-    "input3 ."
-    "input4 ."
-    "input5 .";
-}
-
-.loginForm{
-    row-gap: 1rem;
-    grid-template-areas: 
-    "input1 ."
-    "input2 ."
-    "input3 inpu3";
-    p {
-        font-size: 1.3rem;
-    }
-    input{
-        padding: .5rem;
-    }
 }
 
 .formError {
@@ -87,21 +39,88 @@
     margin-bottom: 1rem;
 }
 
-.submitBtn, .loginBtn {
-    border: 2px solid getColor(primary);
-    border-radius: 5px;
-    padding: 1%;
-    background: getColor(white);
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.datePicker input{
-    padding: 1%;
-    font-size: 1rem;
-}
-
 .howMany select, .formMessage{
     padding: 1%;
     font-size: 1rem;
+}
+
+.bookingForm{
+    div{
+        margin-bottom: 2%;
+    }
+    .datePicker input{
+        padding: 1%;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 821px){
+    .formInput, .formMessage, .select{
+        padding: 5px;
+        margin: 0 5rem 1rem 0;
+    }
+    
+    .fullname, 
+    .checkIn, 
+    .username {
+        grid-area: input1;
+    }
+    
+    .email, 
+    .checkOut, 
+    .password {
+        grid-area: input2;
+    }
+    
+    .subject, 
+    .howMany, 
+    .loginBtn {
+        grid-area: input3;
+    }
+    
+    .textarea {
+        grid-area: input4;
+    }
+    
+    .submitBtn {
+        grid-area: input5;
+    }
+    
+    .contactForm, 
+    .bookingForm, .loginForm {
+        display: grid;
+        margin: 0 0rem 0 1rem;
+        grid-template-columns: 30% 30%;
+        grid-template-rows: auto;
+        column-gap: 1rem;
+    }
+    
+    .contactForm{
+        row-gap: 1rem;
+        grid-template-areas: 
+        "input1 input2"
+        "input3 ."
+        "input4 input4"
+        "input5 .";
+    }
+    
+    .bookingForm{
+        row-gap: .5rem;
+        grid-template-areas: 
+        "input1 input2"
+        "input3 ."
+        "input4 ."
+        "input5 .";
+    }
+    
+    .loginForm{
+        row-gap: 1rem;
+        grid-template-areas: 
+        "input1 ."
+        "input2 ."
+        "input3 inpu3";
+    }
+    .submitBtn, .loginBtn {
+        padding: 1%;
+    }
 }

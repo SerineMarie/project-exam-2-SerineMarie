@@ -1,47 +1,81 @@
-.cardContainer {
-    display: flex;
-    .card{
-        border: solid 1px getColor(black);
-        border-radius: 5px;
-        margin: 0 1rem 0 1rem;
-        padding: 1rem;
-        background: getColor(whiteOpacity);
+.contentContainer{
+    margin: auto;
+    width: 70%;
+}
+
+.section{
+    margin-top: 25%;
+    margin-bottom: 25%;
+    .bookBtn{
+        width: 100%;
+        padding: 2%;
     }
+}
+.card{
+    border: solid 2px getColor(primary);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 2%;
+    font-size: .9rem;
+    background: getColor(whiteOpacity);
 }
 
 .infocard {
-    width: 35%;
-    border: solid 1px getColor(black);
+    border: solid 2px getColor(primary);
     border-radius: 5px;
-    margin: 0 0 1rem 0;
-    padding: 1rem;
+    padding: 3%;
     background: getColor(whiteOpacity);
+    font-size: .9rem;
 }
 
 .infoBtn{
     border: 2px solid getColor(primary);
     border-radius: 5px;
-    padding: 5px;
-    font-size: .9rem;
+    padding: .8rem;
+    font-size: 1rem;
     background: none;
 }
 
-.section {
-    z-index: 1000;
-    position: sticky;
-    top: 15%;
-    bottom: 50%;
-    margin-left: 2%;
-}
+@media(min-width: 821px){
+    .contentContainer{
+        margin: 0;
+        width: 100%;
+    }
+    .cardContainer{
+        display: flex;
+        .card{
+            padding: 1rem;
+            margin: 0 1rem 0 1rem;
+            border: solid 1px getColor(black);
+        }
+    }
+    .infocard{
+        width: 35%;
+        margin: 0 0 1rem 0;
+        padding: 1rem;
+        border: solid 1px getColor(black);
+    }
+    .infoBtn{
+        padding: 5px;
+        font-size: .9rem;
+    }
 
-.card1 {
-    z-index: 1000;
-    position: sticky;
-    top: 30%;
-    // top: 15%;
-    // bottom: 50%;
-}
-
-.contentContainer{
-    margin-bottom: -1%;
+    .section {
+        z-index: 1000;
+        position: sticky;
+        top: 15%;
+        bottom: 50%;
+        margin-left: 2%;
+        margin-bottom: 0;
+        margin-top: 0;
+        .bookBtn{
+            width: 35%;
+            padding: .6rem;
+        }
+    }
+    .card1 {
+        z-index: 1000;
+        position: sticky;
+        top: 30%;
+    }
 }

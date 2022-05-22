@@ -6,8 +6,6 @@ import Heading from '../components/heading/Heading';
 import Head from '../components/head/Head';
 import ContactForm from '../components/form/ContactForm';
 import DisplayMessage from '../components/displayMessage/DisplayMessage';
-import {FontAwesomeIcon} from `@fortawesome/react-fontawesome`;
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 export default function Contact(props) {
   console.log(props)
@@ -16,7 +14,6 @@ export default function Contact(props) {
       <Head title={props.contactpage.data.attributes.title}/>
       <div className={styles.container}>
         <Heading title={props.contactpage.data.attributes.title}/>
-        <FontAwesomeIcon icon={solid(`user-secret`)}/>
         <ContactForm/>
       </div>
     </Layout>
