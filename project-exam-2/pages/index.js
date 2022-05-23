@@ -17,7 +17,10 @@ export default function Home(props) {
         <div className={styles.contentContainer}>
           <img src={props.content.data.attributes.images.data[1].attributes.url} className={styles.bgImage}></img>
           <section className={styles.section}>
-            <p className={styles.infocard}>{props.content.data.attributes.description}</p>
+            <div className={styles.infocard}>
+              <h2 className={styles.subTitle}>{props.content.data.attributes.name}</h2>
+              <p>{props.content.data.attributes.description}</p>
+            </div>
             <button type="button" onClick={() => router.push('/accomodations')} className={styles.bookBtn}>BOOK NOW</button>
           </section>
         </div>

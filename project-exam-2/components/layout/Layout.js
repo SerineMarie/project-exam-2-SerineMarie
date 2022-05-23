@@ -17,7 +17,7 @@ export default function Layout({children}){
                     <Link href="/">
                         <a className={styles.titleSmall}>Holidaze</a>
                     </Link>
-                    <label className={styles.hamburgerLabel} for={styles.hamburgerMenu}>
+                    <label className={styles.hamburgerLabel} htmlFor={styles.hamburgerMenu}>
                         <FontAwesomeIcon icon={faBars} className={styles.faBars}/>
                     </label>
                     <input type="checkbox" id={styles.hamburgerMenu}/> 
@@ -45,7 +45,7 @@ export default function Layout({children}){
                     <p>Copyright 2022</p>
                 </div>
                 <div>
-                <Link href="adminLogin">
+                <Link href="/adminLogin">
                     <a>Admin</a>
                 </Link>
                 </div>
