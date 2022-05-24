@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
-import styles from "../../styles/Home.module.scss";
+import styles from "../../../styles/Home.module.scss";
 import Logo from "../logo/logo";
 import SearchBar from "../search/Search";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -21,21 +21,20 @@ export default function Layout({children}){
                         <FontAwesomeIcon icon={faBars} className={styles.faBars}/>
                     </label>
                     <input type="checkbox" id={styles.hamburgerMenu}/> 
-                
-                <nav className={styles.nav}>
-                    <ul>
-                        <Link href="/">
-                            <a className={styles.logo}><Logo/></a>
-                        </Link>
-                        <Link href="/accomodations">
-                            <a className={router.pathname == "/accomodations" ? "active" : ""}>Accomodations</a>
-                        </Link>
-                        <Link href="/contact">
-                            <a className={router.pathname == "/contact" ? "active" : ""}>Contact</a>
-                        </Link>
-                    </ul>
-                    <SearchBar/>
-                </nav>
+                    <nav className={styles.nav}>
+                        <ul>
+                            <Link href="/">
+                                <a className={styles.logo}><Logo/></a>
+                            </Link>
+                            <Link href="/accomodations">
+                                <a className={router.pathname == "/accomodations" ? "active" : ""}>Accomodations</a>
+                            </Link>
+                            <Link href="/contact">
+                                <a className={router.pathname == "/contact" ? "active" : ""}>Contact</a>
+                            </Link>
+                        </ul>
+                        <SearchBar/>
+                    </nav>
                 </div>
                 {children}
             </div>

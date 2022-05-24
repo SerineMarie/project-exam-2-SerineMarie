@@ -2,9 +2,9 @@ import styles from "../styles/Home.module.scss";
 import { BASE_URL } from '../constans/api';
 import axios from "axios";
 import {useRouter} from "next/router";
-import Layout from '../components/layout/Layout';
-import Head from '../components/head/Head';
-import DisplayMessage from "../components/displayMessage/DisplayMessage";
+import Layout from '../components/common/layout/Layout';
+import Head from "../components/common/head/Head";
+import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 
 
 export default function Home(props) {

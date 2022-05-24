@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Home.module.scss";
+// import axios from "axios";
+
 
 const schema = yup.object().shape({
     checkIn: yup.date().required("Please choose a check in date"),
@@ -16,7 +18,7 @@ const schema = yup.object().shape({
 });
 
 function BookingForm(){
-    // const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
 
     const {
         register, 
@@ -35,6 +37,12 @@ function BookingForm(){
         //reset values?????
     }
     console.log(errors);
+
+    // async function onSubmit(data) {
+    //     setSubmitting(true);
+    //     console.log(data);
+
+    // }
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={styles.bookingForm}>
@@ -79,7 +87,7 @@ function BookingForm(){
                 <p>Message for the hotel (optional)</p>
                 <textarea {...register("message")} placeholder="Message" className={styles.formMessage}/>
             </div>
-            <button className={styles.submitBtn}>Submit</button>
+            <button className={styles.submitBtn}>{submitting ? "Submitting.." : "Submit"}</button>
         </form>
     )
 }

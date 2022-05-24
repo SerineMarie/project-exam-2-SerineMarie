@@ -2,10 +2,10 @@ import styles from "../styles/Home.module.scss";
 // import { useState } from "react";
 import { BASE_URL } from '../constans/api';
 import axios from "axios";
-import AdminLayout from '../components/layout/AdminLayout';
-import Head from '../components/head/Head';
-import DisplayMessage from "../components/displayMessage/DisplayMessage";
-import Heading from "../components/heading/Heading";
+import AdminLayout from "../components/common/layout/AdminLayout";
+import Head from '../components/common/head/Head';
+import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
+import Heading from "../components/common/heading/Heading";
 import Link from "next/link";
 
 export default function AdminLogIn(props){
@@ -15,7 +15,7 @@ export default function AdminLogIn(props){
             <Head title={props.adminPage.data.attributes.title}/>
             <div className={styles.container}>
                 <Heading title={props.adminPage.data.attributes.title}/>
-                <div className={styles.adminUl}>
+                <div className={styles.adminContent}>
                     <Link href="/enquiries">
                         <a>Enquiries</a>
                     </Link>

@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import Head from "../components/head/Head";
-import Heading from "../components/heading/Heading";
-import Layout from "../components/layout/Layout";
+import Head from "../components/common/head/Head";
+import Heading from "../components/common/heading/Heading";
+import Layout from "../components/common/layout/Layout";
 import { BASE_URL } from "../constans/api";
 import BookingForm from "../components/form/BookingForm";
 import styles from '../styles/Home.module.scss'
-import DisplayMessage from "../components/displayMessage/DisplayMessage";
+import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 
 
 
