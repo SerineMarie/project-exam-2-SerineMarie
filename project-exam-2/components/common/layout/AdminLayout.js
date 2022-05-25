@@ -26,11 +26,11 @@ export default function AdminLayout({children}){
                             <Link href="/">
                                 <a className={styles.logo}><Logo/></a>
                             </Link>
-                            <Link href="/enquiries">
-                                <a className={router.pathname == "/enquiries" ? "active" : ""}>Enquiries</a>
+                            <Link href="/enquiry">
+                                <a className={router.pathname == "/enquiry" ? "active" : ""}>Enquiries</a>
                             </Link>
-                            <Link href="/messages">
-                                <a className={router.pathname == "/messages" ? "active" : ""}>Messages</a>
+                            <Link href="/contactMessages">
+                                <a className={router.pathname == "/contactMessages" ? "active" : ""}>Messages</a>
                             </Link>
                             <Link href="/newEst">
                                 <a className={router.pathname == "/newEst" ? "active" : ""}>New establishment</a>

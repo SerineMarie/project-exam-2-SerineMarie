@@ -1,11 +1,11 @@
 import { BASE_URL } from '../constans/api';
 import axios from "axios";
 import styles from "../styles/Home.module.scss";
-import Layout from '../components/layout/Layout';
-import Heading from '../components/heading/Heading';
-import Head from '../components/head/Head';
+import Layout from '../components/common/layout/Layout';
+import Heading from '../components/common/heading/Heading';
+import Head from '../components/common/head/Head';
 import ContactForm from '../components/form/ContactForm';
-import DisplayMessage from '../components/displayMessage/DisplayMessage';
+import DisplayMessage from '../components/common/displayMessage/DisplayMessage';
 
 export default function Contact(props) {
   console.log(props)
@@ -22,11 +22,11 @@ export default function Contact(props) {
 
 
 export async function getStaticProps(){
-  const contactApi = BASE_URL + "/contactpage";
+  const contactUrl = BASE_URL + "/contactpage";
   let contactpage = [] ;
 
   try {
-    const response = await axios.get(contactApi)
+    const response = await axios.get(contactUrl)
     console.log(response.data);
     contactpage = response.data;
   } catch(error){

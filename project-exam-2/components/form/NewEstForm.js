@@ -21,9 +21,7 @@ const schema = yup.object().shape({
 
 export default function NewEstForm(){
     const url = BASE_URL + "/hotels?populate=*";
-
     const [submitting, setSubmitting] = useState(false);
-   const token = getToken();
 
 
     const {
@@ -34,13 +32,14 @@ export default function NewEstForm(){
         resolver: yupResolver(schema),
     });
     
-    async function onSubmit(data){
+    async function onSubmit(data, e){
+        const token = getToken();
         setSubmitting(true);
         console.log(data);
         axios.post(url, {
             "data":{
                 "name": data.hotelname,
-                "location": data.address,
+                "location": data.location,
                 "price": data.price,
                 "excerpt": data.excerpt,
                 "slug": data.slug,
@@ -56,6 +55,7 @@ export default function NewEstForm(){
         )
             .then(response => {
                 setSubmitting(true)
+                e.target.reset();
             })
     }
 
@@ -72,8 +72,8 @@ export default function NewEstForm(){
                 {errors.location && <span className={styles.formError}>{errors.location.message}</span>}
             </div>
             <div className={styles.addImage}>
-                <p>Image url</p>
-                <input {...register("images")} placeholder="Image url" className={styles.formInput}/>
+                <p>Images</p>
+                <input {...register("images")} placeholder="Images" className={styles.formInput}/>
                 {errors.images && <span className={styles.formError}>{errors.images.message}</span>}
             </div>
             <div className={styles.excerpt}>

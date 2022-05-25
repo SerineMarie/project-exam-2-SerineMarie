@@ -2,10 +2,10 @@ import styles from "../styles/Home.module.scss";
 import { BASE_URL } from "../constans/api";
 import axios from "axios";
 import {useRouter} from "next/router";
-import Layout from '../components/layout/Layout';
-import Heading from '../components/heading/Heading';
-import Head from "../components/head/Head";
-import DisplayMessage from "../components/displayMessage/DisplayMessage";
+import Layout from '../components/common/layout/Layout';
+import Heading from '../components/common/heading/Heading';
+import Head from "../components/common/head/Head";
+import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 
 export default function Accomodations(props){
   const router = useRouter();
@@ -19,15 +19,19 @@ export default function Accomodations(props){
             <div key={hotel.slug} className={styles.accomodationsCard}>
               <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.accomodationsContent}>
                 <img src={hotel.attributes.images.data[0].attributes.url} className={styles.images}></img>
-                <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
-                <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
-                <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
-                <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
+                <div>
+                  <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
+                  <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
+                  <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
+                </div>
               </a>
-              <button key={hotel.id} onClick={() => router.push('/booking')} className={styles.bookBtn}>BOOK NOW</button>
-            </div>
-          );
-        })}
+              <div className={styles.priceContainer}>
+                <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
+                <button key={hotel.id} onClick={() => router.push('/booking')} className={styles.bookBtn}>BOOK NOW</button>
+              </div>
+          </div>
+         );
+      })}
       </div>
     </Layout>
   )

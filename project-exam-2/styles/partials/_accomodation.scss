@@ -1,7 +1,6 @@
 .imageContainer{
      width: 70%;
      margin: 0;
-    //  grid-area: input1;
 }
 
 .textContainer{
@@ -13,24 +12,7 @@
 }
 
 @media(min-width: 821px){
-    .facilitesContainer{
-        position: absolute;
-        z-index: 100;
-        border: 2px solid getColor(primary);
-        padding: 1%;
-        width: 11%;
-        left: 80%;
-    }
 
-    .facilities {
-        font-size: 1.2rem;
-        // grid-area: input2;
-    }
-    // .gridContainer {
-    //     display: grid;
-    //     grid-template-columns: 90% 10%;
-    //     grid-template-rows: auto;
-    //     grid-template-areas: "input1 input2";
-    // }
+
 }
 

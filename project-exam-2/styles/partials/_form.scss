@@ -9,7 +9,11 @@
     }
 }
 
-.formInput, .formMessage, .select{
+.disableInput:disabled
+
+.formInput,
+.formMessage,
+.select{
     border: 1px solid getColor(gray);
     width: 100%;
     border-radius: 5px;
@@ -20,7 +24,9 @@
     }
 }
 
-.submitBtn, .loginBtn, .addBtn {
+.submitBtn,
+.loginBtn,
+.addBtn {
     border: 2px solid getColor(primary);
     border-radius: 5px;
     padding: 2%;
@@ -40,7 +46,8 @@
     margin-bottom: 1rem;
 }
 
-.howMany select, .formMessage{
+.howMany select, 
+.formMessage{
     padding: 1%;
     font-size: 1rem;
 }
@@ -56,34 +63,41 @@
 }
 
 @media (min-width: 821px){
-    .formInput, .formMessage, .select{
+    .formInput, 
+    .formMessage, 
+    .select{
         padding: 5px;
         margin: 0 5rem 1rem 0;
     }
     
     .fullname, 
     .checkIn, 
-    .username, .hotelname {
+    .username, 
+    .hotelname {
         grid-area: input1;
     }
     
     .email, 
     .checkOut, 
-    .password, .location {
+    .password, 
+    .location {
         grid-area: input2;
     }
     
     .subject, 
     .howMany, 
-    .loginBtn, .addImage {
+    .loginBtn, 
+    .addImage {
         grid-area: input3;
     }
     
-    .textarea, .excerpt {
+    .textarea, 
+    .excerpt {
         grid-area: input4;
     }
     
-    .submitBtn, .description {
+    .submitBtn, 
+    .description {
         grid-area: input5;
     }
     .price {
@@ -98,7 +112,9 @@
     }
     
     .contactForm, 
-    .bookingForm, .loginForm, .newEstForm {
+    .bookingForm,
+    .loginForm, 
+    .newEstForm {
         display: grid;
         margin: 0 0rem 0 1rem;
         grid-template-columns: 30% 30%;
@@ -109,10 +125,10 @@
     .contactForm{
         row-gap: 1rem;
         grid-template-areas: 
-        "input1 input2"
+        "input1  input2"
         "input3 ."
-        "input4 input4"
-        "input5 .";
+        "input4  input4"
+        "input5 input5";
     }
     
     .bookingForm{
@@ -120,8 +136,8 @@
         grid-template-areas: 
         "input1 input2"
         "input3 ."
-        "input4 ."
-        "input5 .";
+        "input4 input4"
+        "input5 input5";
     }
     
     .loginForm{

@@ -16,11 +16,11 @@ export default function AdminLogIn(props){
             <div className={styles.container}>
                 <Heading title={props.adminPage.data.attributes.title}/>
                 <div className={styles.adminContent}>
-                    <Link href="/enquiries">
+                    <Link href="/enquiry">
                         <a>Enquiries</a>
                     </Link>
-                    <Link href="/messages">
-                        <a>Messages</a>
+                    <Link href="/contactMessages">
+                        <a>Contact messages</a>
                     </Link>
                     <Link href="/newEst">
                         <a>Create new establishment</a>
