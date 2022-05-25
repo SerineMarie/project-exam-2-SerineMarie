@@ -16,8 +16,8 @@ export default function AdminLogIn(props){
             <div className={styles.container}>
                 <Heading title={props.adminPage.data.attributes.title}/>
                 <div className={styles.adminContent}>
-                    <Link href="/enquiry">
-                        <a>Enquiries</a>
+                    <Link href="/adminBooking">
+                        <a>Bookings</a>
                     </Link>
                     <Link href="/contactMessages">
                         <a>Contact messages</a>

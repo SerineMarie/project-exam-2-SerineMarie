@@ -5,7 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Home.module.scss";
-// import axios from "axios";
+import { BASE_URL } from "../../constans/api";
+import axios from "axios";
 
 
 const schema = yup.object().shape({
@@ -14,10 +15,13 @@ const schema = yup.object().shape({
         const {checkIn} = this.parent;
         return value.getTime() !== checkIn.getTime();
     }),
-    howMany: yup.string().required("Please choose how many people"),
+    howMany: yup.number().required("Please choose how many people"),
+    hotelMessage: yup.string(),
 });
 
 function BookingForm(){
+    const bookingUrl = BASE_URL + "/booking?populate=*";
+
     const [submitting, setSubmitting] = useState(false);
 
     const {
@@ -31,18 +35,24 @@ function BookingForm(){
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date())
 
-    function onSubmit(data){
+    function onSubmit(data, e){
         console.log(data);
-        //do a post request
-        //reset values?????
+        setSubmitting(true);
+        axios.get(url, {
+            "data": {
+                "checkIn": data.checkIn,
+                "checkOut": data.checkOut,
+                "howMany": data.howMany,
+                "hotelMessage": data.hotelMessage,
+            }
+        })
+        .then(response => {
+            setSubmitting(true);
+            e.target.reset();
+        })
+
     }
     console.log(errors);
-
-    // async function onSubmit(data) {
-    //     setSubmitting(true);
-    //     console.log(data);
-
-    // }
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={styles.bookingForm}>
@@ -85,7 +95,7 @@ function BookingForm(){
             </div>
             <div className={styles.textarea}>
                 <p>Message for the hotel (optional)</p>
-                <textarea {...register("message")} placeholder="Message" className={styles.formMessage}/>
+                <textarea {...register("hotelMessage")} placeholder="Message for hotel (optional)" className={styles.formMessage}/>
             </div>
             <button className={styles.submitBtn}>{submitting ? "Submitting.." : "Submit"}</button>
         </form>

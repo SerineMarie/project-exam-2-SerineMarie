@@ -6,7 +6,7 @@ import Head from "../components/common/head/Head";
 import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 import AdminLayout from "../components/common/layout/AdminLayout";
 
-export default function BookingEnquiry(props){
+export default function AdminBooking(props){
     console.log(props)
     return(
         <AdminLayout>

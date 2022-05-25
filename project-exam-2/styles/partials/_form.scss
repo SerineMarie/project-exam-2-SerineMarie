@@ -97,14 +97,14 @@
     }
     
     .submitBtn, 
-    .description {
+    .slug  {
         grid-area: input5;
     }
     .price {
         grid-area: input6;
     }
 
-    .slug{
+    .description{
         grid-area: input7;
     }
     .addBtn{
@@ -153,8 +153,8 @@
         grid-template-areas: 
         "input1 input2"
         "input3 input4"
-        "input5 input5"
-        "input6 input7"
+        "input5 input6"
+        "input7 input7"
         "input8 input8";
     }
     .submitBtn, .loginBtn, .addBtn{

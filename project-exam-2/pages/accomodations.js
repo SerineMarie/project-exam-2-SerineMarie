@@ -25,7 +25,7 @@ export default function Accomodations(props){
                   <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
                 </div>
               </a>
-              <div className={styles.priceContainer}>
+              <div className={styles.bottomContainer}>
                 <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
                 <button key={hotel.id} onClick={() => router.push('/booking')} className={styles.bookBtn}>BOOK NOW</button>
               </div>

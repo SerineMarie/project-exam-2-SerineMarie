@@ -81,11 +81,6 @@ export default function NewEstForm(){
                 <input {...register("excerpt")} placeholder="Hotel excerpt" className={styles.formInput}/>
                 {errors.excerpt && <span className={styles.formError}>{errors.excerpt.message}</span>}
             </div>
-            <div className={styles.description}>
-                <p>Hotel description</p>
-                <textarea {...register("description")} placeholder="Hotel description" className={styles.formMessage}/>
-                {errors.excerpt && <span className={styles.formError}>{errors.description.message}</span>}
-            </div>
             <div className={styles.price}>
                 <p>Hotel price</p>
                 <input {...register("price")} placeholder="Hotel price" className={styles.formInput}/>
@@ -95,6 +90,11 @@ export default function NewEstForm(){
                 <p>Hotel slug</p>
                 <input {...register("slug")} placeholder="Hotel slug" className={styles.formInput}/>
                 {errors.slug && <span className={styles.formError}>{errors.slug.message}</span>}
+            </div>
+            <div className={styles.description}>
+                <p>Hotel description</p>
+                <textarea {...register("description")} placeholder="Hotel description" className={styles.formMessage}/>
+                {errors.excerpt && <span className={styles.formError}>{errors.description.message}</span>}
             </div>
             <button className={styles.addBtn}>{submitting ? "Adding.." : "Add"}</button>
         </form>

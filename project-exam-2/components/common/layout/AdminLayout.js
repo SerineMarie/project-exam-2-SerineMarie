@@ -26,8 +26,8 @@ export default function AdminLayout({children}){
                             <Link href="/">
                                 <a className={styles.logo}><Logo/></a>
                             </Link>
-                            <Link href="/enquiry">
-                                <a className={router.pathname == "/enquiry" ? "active" : ""}>Enquiries</a>
+                            <Link href="/adminBooking">
+                                <a className={router.pathname == "/adminBooking" ? "active" : ""}>Enquiries</a>
                             </Link>
                             <Link href="/contactMessages">
                                 <a className={router.pathname == "/contactMessages" ? "active" : ""}>Messages</a>

@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 });
 
 function ContactForm (){
-    const contactUrl = BASE_URL + "/contactpage";
+    const contactUrl = BASE_URL + "/contactpage?populate=*";
     const [submitting, setSubmitting] = useState(false);
 
     const {
@@ -29,7 +29,6 @@ function ContactForm (){
     function onSubmit(data, e){
         console.log(data);
         setSubmitting(true)
-        console.log(data);
         axios.post(contactUrl, {
             "data": {
                 "fullname": data.fullname,
