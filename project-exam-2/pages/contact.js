@@ -11,9 +11,9 @@ export default function Contact(props) {
   console.log(props)
   return (
     <Layout>
-      <Head title={props.contactpage.data.attributes.title}/>
+      <Head title="Contact"/>
       <div className={styles.container}>
-        <Heading title={props.contactpage.data.attributes.title}/>
+        <Heading title="Contact"/>
         <ContactForm/>
       </div>
     </Layout>
@@ -22,7 +22,7 @@ export default function Contact(props) {
 
 
 export async function getStaticProps(){
-  const contactUrl = BASE_URL + "/contactpage";
+  const contactUrl = BASE_URL + "/contactpages?populate=*";
   let contactpage = [] ;
 
   try {

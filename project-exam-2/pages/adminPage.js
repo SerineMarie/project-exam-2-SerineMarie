@@ -12,14 +12,14 @@ export default function AdminLogIn(props){
     console.log(props)
     return (
         <AdminLayout>
-            <Head title={props.adminPage.data.attributes.title}/>
+            <Head title="Admin homepage"/>
             <div className={styles.container}>
-                <Heading title={props.adminPage.data.attributes.title}/>
+                <Heading title="Admin homepage"/>
                 <div className={styles.adminContent}>
                     <Link href="/adminBooking">
                         <a>Bookings</a>
                     </Link>
-                    <Link href="/contactMessages">
+                    <Link href="/adminContact">
                         <a>Contact messages</a>
                     </Link>
                     <Link href="/newEst">
@@ -32,24 +32,24 @@ export default function AdminLogIn(props){
 }
 
 
-export async function getStaticProps(){
-    const admin = BASE_URL + "/adminpage";
-    let adminPage = [];
+// export async function getStaticProps(){
+//     const admin = BASE_URL + "/adminpage";
+//     let adminPage = [];
   
-    try {
-      const response = await axios.get(admin);
-      console.log(response.data);
-      adminPage = response.data;
+//     try {
+//       const response = await axios.get(admin);
+//       console.log(response.data);
+//       adminPage = response.data;
       
-    } catch(error){
-      DisplayMessage(`An error occured`, {error})
-      console.log(error)
-    }
+//     } catch(error){
+//       DisplayMessage(`An error occured`, {error})
+//       console.log(error)
+//     }
   
-    return {
-      props: {
-        adminPage: adminPage,
-      },
-    };
-  }
+//     return {
+//       props: {
+//         adminPage: adminPage,
+//       },
+//     };
+//   }
   

@@ -9,8 +9,6 @@
     }
 }
 
-.disableInput:disabled
-
 .formInput,
 .formMessage,
 .select{
@@ -64,98 +62,109 @@
 
 @media (min-width: 821px){
     .formInput, 
-    .formMessage, 
     .select{
+        width: 100%;
         padding: 5px;
         margin: 0 5rem 1rem 0;
-    }
-    
-    .fullname, 
-    .checkIn, 
-    .username, 
-    .hotelname {
-        grid-area: input1;
-    }
-    
-    .email, 
-    .checkOut, 
-    .password, 
-    .location {
-        grid-area: input2;
-    }
-    
-    .subject, 
-    .howMany, 
-    .loginBtn, 
-    .addImage {
-        grid-area: input3;
-    }
-    
-    .textarea, 
-    .excerpt {
-        grid-area: input4;
-    }
-    
-    .submitBtn, 
-    .slug  {
-        grid-area: input5;
-    }
-    .price {
-        grid-area: input6;
+        font-size: 1rem;
     }
 
-    .description{
-        grid-area: input7;
+
+    .loginBtn,
+    .submitBtn,
+    .addBtn {
+        grid-area: button;
     }
-    .addBtn{
-        grid-area: input8;
+
+    .fullname, 
+    .hotelName,
+    .username{
+        grid-area: nameInput;
+    }
+
+    .email,
+    .location,
+    .howMany{
+        grid-area: input2;
+    }
+
+    .password,
+    .subject {
+        grid-area: input3; 
+    }
+
+    .addImage,
+    .checkIn{
+        grid-area: input4;
+    }
+    .addImage,
+    .checkIn{
+        grid-area: input5;
+    }
+
+    .excerpt,
+    .checkOut {
+        grid-area: input6;
     }
     
-    .contactForm, 
+    .textarea{
+        grid-area: textarea;
+    }
+
+    .price{
+        grid-area: price;
+    }
+
+    .slug{
+        grid-area: slug;
+    }
+
+    .loginForm,
+    .contactForm,
     .bookingForm,
-    .loginForm, 
-    .newEstForm {
+    .newEstForm{
         display: grid;
-        margin: 0 0rem 0 1rem;
         grid-template-columns: 30% 30%;
         grid-template-rows: auto;
-        column-gap: 1rem;
     }
     
     .contactForm{
         row-gap: 1rem;
+        column-gap: 1rem;
         grid-template-areas: 
-        "input1  input2"
-        "input3 ."
-        "input4  input4"
-        "input5 input5";
+        "nameInput input2"
+        "input3 input3"
+        "textarea textarea"
+        "button button";
     }
     
     .bookingForm{
-        row-gap: .5rem;
+        row-gap: 1rem;
+        column-gap: 1em;
         grid-template-areas: 
-        "input1 input2"
-        "input3 ."
-        "input4 input4"
-        "input5 input5";
+        "nameInput input2"
+        "input5 input6"
+        "textarea textarea"
+        "button button";
     }
     
     .loginForm{
         row-gap: 1rem;
         grid-template-areas: 
-        "input1 ."
-        "input2 ."
-        "input3 inpu3";
+        "nameInput nameInput"
+        "input3 input3"
+        "button button";
     }
 
     .newEstForm{
-        // row-gap: .2rem;
+        column-gap: 1em;
+        row-gap: 1rem;
         grid-template-areas: 
-        "input1 input2"
-        "input3 input4"
+        "nameInput input2"
         "input5 input6"
-        "input7 input7"
-        "input8 input8";
+        "price slug"
+        "textarea textarea"
+        "button button";
     }
     .submitBtn, .loginBtn, .addBtn{
         padding: 1%;

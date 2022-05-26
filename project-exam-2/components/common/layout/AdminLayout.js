@@ -23,14 +23,14 @@ export default function AdminLayout({children}){
                     <input type="checkbox" id={styles.hamburgerMenu}/>
                     <nav className={styles.nav}>
                         <ul>
-                            <Link href="/">
+                            <Link href="/adminPage">
                                 <a className={styles.logo}><Logo/></a>
                             </Link>
                             <Link href="/adminBooking">
                                 <a className={router.pathname == "/adminBooking" ? "active" : ""}>Enquiries</a>
                             </Link>
-                            <Link href="/contactMessages">
-                                <a className={router.pathname == "/contactMessages" ? "active" : ""}>Messages</a>
+                            <Link href="/adminContact">
+                                <a className={router.pathname == "/adminContact" ? "active" : ""}>Messages</a>
                             </Link>
                             <Link href="/newEst">
                                 <a className={router.pathname == "/newEst" ? "active" : ""}>New establishment</a>

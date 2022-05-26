@@ -11,11 +11,11 @@ const schema = yup.object().shape({
     fullname: yup.string().required("Please enter your full name").min(3, "There must be at least three characters"),
     email: yup.string().required("Please enter your email address").email("Email address not valid"),
     subject: yup.string().required("Please choose subject"),
-    contactMessage: yup.string().required("Please fill out message form").min(10, "The message must have at least 10 characters")
+    message: yup.string().required("Please fill out message form").min(10, "The message must have at least 10 characters")
 });
 
 function ContactForm (){
-    const contactUrl = BASE_URL + "/contactpage?populate=*";
+    const contactUrl = BASE_URL + "/contactpages?populate=*";
     const [submitting, setSubmitting] = useState(false);
 
     const {
@@ -34,7 +34,7 @@ function ContactForm (){
                 "fullname": data.fullname,
                 "email": data.email,
                 "subject": data.subject,
-                "contactMessage": data.contactMessage
+                "message": data.contactMessage
             }
         }
         )
@@ -42,26 +42,25 @@ function ContactForm (){
             setSubmitting(true);
             e.target.reset();
         })
-
-
-        //do a post request
-        //reset values?????
     }
     console.log(errors);
 
     return (
             <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                 <div className={styles.fullname}>
+                    <p>Full name</p>
                     <input {...register("fullname")} placeholder="Full name" className={styles.formInput}/>
                     {errors.fullname && <span className={styles.formError}>{errors.fullname.message}</span>}
                 </div>
 
                 <div className={styles.email}>
+                    <p>Email</p>
                     <input {...register("email")} placeholder="Email" className={styles.formInput}/>
                     {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
                 </div>
 
                 <div className={styles.subject}>
+                    <p>Subject</p>
                     <select {...register("subject")} className={styles.select}>
                         <option disabled selected>Select subject</option>
                         <option>Booking</option>
@@ -72,8 +71,9 @@ function ContactForm (){
                 </div>
 
                 <div className={styles.textarea}>
-                    <textarea {...register("contactMessage")} placeholder="Message" className={styles.formMessage}/>
-                    {errors.contactMessage && <span className={styles.formError}>{errors.message.contactMessage}</span>}
+                    <p>Message</p>
+                    <textarea {...register("message")} placeholder="Message" className={styles.formMessage}/>
+                    {errors.contactMessage && <span className={styles.formError}>{errors.message.message}</span>}
                 </div>
                 <button className={styles.submitBtn}>{submitting ? "Sending.." : "Send"}</button>
             </form>

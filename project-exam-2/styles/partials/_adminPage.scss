@@ -8,3 +8,12 @@
         margin: 1rem;
     }   
 }
+
+.contactContainer, 
+.bookingContainer{
+    border: 1px solid getColor(black);
+    border-radius: 5px;
+    padding: 1%;
+    margin-bottom: 3%;
+    width: 50%;
+}

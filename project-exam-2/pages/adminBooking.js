@@ -10,16 +10,26 @@ export default function AdminBooking(props){
     console.log(props)
     return(
         <AdminLayout>
-            <Head title={props.enquiryPage.data.attributes.title}/>
+            <Head title="Bookings"/>
             <div className={styles.container}>
-                <Heading title={props.enquiryPage.data.attributes.title}/>
+                <Heading title="Bookings"/>
+                {props.enquiryPage.data.map((bookings) =>{
+                    return( <div className={styles.bookingContainer}>
+                              <h2 className={styles.subTitle}>Booking {bookings.id}</h2>
+                              <p>Name: {bookings.attributes.fullname}</p>
+                              <p>How many: {bookings.attributes.howMany}</p>
+                              <p>Check in date: {bookings.attributes.checkIn}</p>
+                              <p>Check out date: {bookings.attributes.checkOut}</p>
+                            </div>
+                    )
+                })}
             </div>
         </AdminLayout>
     )
 }
 
 export async function getStaticProps(){
-    const enquiryUrl = BASE_URL + "/booking?populate=*";
+    const enquiryUrl = BASE_URL + "/bookings?populate=*";
     let enquiryPage = [];
   
     try {

@@ -19,6 +19,7 @@ const schema = yup.object().shape({
     slug: yup.string().required("Enter name of hotel with no captial letters and no space").min(3, "Please enter at least 3 characters"),
 });
 
+
 export default function NewEstForm(){
     const url = BASE_URL + "/hotels?populate=*";
     const [submitting, setSubmitting] = useState(false);
@@ -91,7 +92,7 @@ export default function NewEstForm(){
                 <input {...register("slug")} placeholder="Hotel slug" className={styles.formInput}/>
                 {errors.slug && <span className={styles.formError}>{errors.slug.message}</span>}
             </div>
-            <div className={styles.description}>
+            <div className={styles.textarea}>
                 <p>Hotel description</p>
                 <textarea {...register("description")} placeholder="Hotel description" className={styles.formMessage}/>
                 {errors.excerpt && <span className={styles.formError}>{errors.description.message}</span>}
