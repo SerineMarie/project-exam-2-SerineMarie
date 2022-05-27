@@ -5,6 +5,15 @@
     text-transform: capitalize;
     font-size: .9rem;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.bookBtn:hover{
+    box-shadow: 1rem;
+    text-shadow: 0px 0px 6px getColor(cta-color);
+    -webkit-box-shadow: 0px 5px 40px -10px getColor(cta-color);
+    -moz-box-shadow: 0px 5px 40px -10px getColor(cta-color);
+    transition: all 0.4s ease 0s;
 }
 
 .container {

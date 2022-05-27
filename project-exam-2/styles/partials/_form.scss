@@ -25,6 +25,7 @@
 .submitBtn,
 .loginBtn,
 .addBtn {
+    cursor: pointer;
     border: 2px solid getColor(primary);
     border-radius: 5px;
     padding: 2%;
