@@ -19,6 +19,7 @@ export default function BookingForm(){
     const bookingUrl = BASE_URL + "/bookings?populate=*";
 
     const [submitting, setSubmitting] = useState(false);
+    const [formSendt, setFormSendt] = useState(false);
     const [formError, setFormError] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date())
@@ -60,6 +61,7 @@ export default function BookingForm(){
             setFormError("Incorrect credentials");
             e.target.reset();
         } finally{
+            setFormSendt("Booking sendt")
             setSubmitting(true)
             e.target.reset();
         }
@@ -69,6 +71,7 @@ export default function BookingForm(){
     return(
         <>
             {formError && <div className={styles.formError}>{formError}</div>}
+            {formSendt && <div className={styles.formValidated}>{formSendt}</div>}
             <form onSubmit={handleSubmit(onSubmit)} className={styles.bookingForm}>
                 <div className={styles.fullname}>
                     <p>Fullname</p>

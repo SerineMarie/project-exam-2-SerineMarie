@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 export default function NewEstForm(){
     const url = BASE_URL + "/hotels?populate=*";
     const [submitting, setSubmitting] = useState(false);
+    const [formSendt, setFormSendt] = useState(false);
 
 
     const {
@@ -71,6 +72,7 @@ export default function NewEstForm(){
             e.target.reset();
             setSubmitting("Incorrect credentials");
         } finally{
+            setFormSendt("New establishment created!")
             setSubmitting(true);
             e.target.reset();
 
@@ -80,6 +82,7 @@ export default function NewEstForm(){
     return(
         <>
             {submitting && <div className={styles.formError}>{submitting}</div>}
+            {formSendt && <div className={styles.formValidated}>{formSendt}</div>}
             <form onSubmit={handleSubmit(onSubmit)} className={styles.newEstForm} disabled={submitting}>
                 <div className={styles.hotelName}>
                     <p>Hotel name</p>

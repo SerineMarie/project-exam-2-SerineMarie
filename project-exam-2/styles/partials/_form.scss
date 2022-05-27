@@ -47,6 +47,14 @@
     background: getColor(formError);
     padding: .5rem;
     width: 20%;
+    border-radius: 5px;
+}
+
+.formValidated{
+    background: getColor(cta-color);
+    padding: .5rem;
+    width: 20%;
+    border-radius: 5px;
 }
 
 .howMany select, 

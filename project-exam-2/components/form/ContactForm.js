@@ -18,6 +18,8 @@ export default function ContactForm (){
     const contactUrl = BASE_URL + "/contactpages?populate=*";
     const [submitting, setSubmitting] = useState(false);
     const [formError, setFormError] = useState(false);
+    const [formSendt, setFormSendt] = useState(false);
+
 
 
     const {
@@ -49,14 +51,16 @@ export default function ContactForm (){
             setformError("Incorrect credentials")
             e.target.reset();
         } finally{
-            setSubmitting(true)
+            setFormSendt("Message sendt")
             e.target.reset();
+            setSubmitting(true)
         }
     }
 
     return (
         <>
             {formError && <div className={styles.formError}>{formError}</div>}
+            {formSendt && <div className={styles.formValidated}>{formSendt}</div>}
             <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                 <div className={styles.fullname}>
                     <p>Full name</p>
