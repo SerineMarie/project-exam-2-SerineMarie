@@ -14,8 +14,7 @@ export default function Home(props) {
   return (
     <Layout>
       <Head title={props.content.data.attributes.title}/>
-        <div className={styles.contentContainer}>
-          <img src={props.content.data.attributes.images.data[1].attributes.url} className={styles.bgImage}></img>
+        <div className={styles.contentContainerTop}>
           <section className={styles.section}>
             <div className={styles.infocard}>
               <h2 className={styles.subTitle}>{props.content.data.attributes.name}</h2>
@@ -23,11 +22,13 @@ export default function Home(props) {
             </div>
             <button type="button" onClick={() => router.push('/accomodations')} className={styles.bookBtn}>BOOK NOW</button>
           </section>
+          <img src={props.content.data.attributes.images.data[1].attributes.url} className={styles.bgImage}></img>
         </div>
-        <div className={styles.contentContainer}>
-          <div className={`${styles.cardContainer} ${styles.card1}`}>
+        <div className={styles.contentContainerBottom}>
+        <img src={props.content.data.attributes.images.data[2].attributes.url} className={styles.bgImage2}></img>
+          <div className={`${styles.cardContainer} ${styles.card}`}>
             {props.content.data.attributes.hotels.data.map((shortcut) =>{
-              return <section className={styles.card}>
+              return <section className={styles.cardContent}>
                       <a key={shortcut.id}>
                         <h2 key={shortcut.attributes.id} className={styles.subTitle}>{shortcut.attributes.name}</h2>
                         <p>{shortcut.attributes.excerpt}</p>
@@ -36,7 +37,6 @@ export default function Home(props) {
                     </section>
               })}
           </div>
-          <img src={props.content.data.attributes.images.data[0].attributes.url} className={styles.bgImage}></img>
         </div>
     </Layout>
   )

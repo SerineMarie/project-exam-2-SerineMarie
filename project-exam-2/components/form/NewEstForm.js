@@ -1,7 +1,7 @@
 import { BASE_URL } from "../../constans/api";
 import axios from "axios";
 import { useState } from "react";
-import { get, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "../../styles/Home.module.scss";
@@ -10,9 +10,7 @@ import { getToken } from "../../utils/storage";
 const schema = yup.object().shape({
     hotelname: yup.string().required("Please enter name of hotel").min(3, "Please enter at least 3 characters"),
     location: yup.string().required("Please enter hotel address").min(5, "Please enter at least 5 characters"),
-    // images: yup.string().required("Please enter image url").min(5,"Please enter at least 5 characters"),
-    // images: yup.mixed().test("required", "Please enter image (File Type: jpeg and jpg", (value) => value.length > 0)
-    //         .test("fileType", "Please enter correct filetype (jpeg or jpg)", (value) => ),
+    images: yup.mixed().required("Please provide a file"),
     excerpt: yup.string().required("Please enter exerpt of hotel").min(10, "Please enter at least 10 characters"),
     description: yup.string().required("Please enter description of hotel").min(15, "Please enter at least 15 characters"),
     price: yup.number().required("Please enter price for hotel").min(1, "Please enter at least 1 characters"),
@@ -32,6 +30,8 @@ export default function NewEstForm(){
     } = useForm({
         resolver: yupResolver(schema),
     });
+
+    // const formData = new FormData();
     
     async function onSubmit(data, e){
         const token = getToken();
@@ -55,8 +55,12 @@ export default function NewEstForm(){
         }
         )
             .then(response => {
-                setSubmitting(true)
+                setSubmitting(true);
                 e.target.reset();
+            }) 
+
+            .then(response =>{
+                setSubmitting(false)
             })
     }
 
@@ -74,7 +78,7 @@ export default function NewEstForm(){
             </div>
             <div className={styles.addImage}>
                 <p>Images</p>
-                <input {...register("images")} placeholder="Images" className={styles.formInput}/>
+                <input {...register("images")} placeholder="Images" type="file" name="images" className={styles.formInput}/>
                 {errors.images && <span className={styles.formError}>{errors.images.message}</span>}
             </div>
             <div className={styles.excerpt}>

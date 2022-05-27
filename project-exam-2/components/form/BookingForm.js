@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Home.module.scss";
 import { BASE_URL } from "../../constans/api";
 import axios from "axios";
-import { getToken } from "../../utils/storage";
+// import { getToken } from "../../utils/storage";
 
 
 const schema = yup.object().shape({
@@ -57,7 +57,10 @@ export default function BookingForm(){
             }
             setSubmitting(true);
             e.target.reset();
-            console.log(response)
+            
+        })
+        .then(response =>{
+            setSubmitting(false)
         })
     }
     console.log(errors);

@@ -4,7 +4,7 @@ import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import { BASE_URL} from "../../constans/api";
 import styles from "../../styles/Home.module.scss";
-import axios from "axios"
+import axios from "axios";
 
 
 const schema = yup.object().shape({
@@ -41,6 +41,10 @@ function ContactForm (){
         .then(response => {
             setSubmitting(true);
             e.target.reset();
+        }) 
+
+        .then(response =>{
+            setSubmitting(false)
         })
     }
     console.log(errors);

@@ -1,4 +1,5 @@
-.contentContainer{
+.contentContainerTop, 
+.contentContainerBottom{
     margin: auto;
     width: 70%;
 }
@@ -11,7 +12,7 @@
         padding: 2%;
     }
 }
-.card{
+.cardContent{
     border: solid 2px getColor(primary);
     border-radius: 5px;
     margin-bottom: 1rem;
@@ -41,18 +42,45 @@
 }
 
 @media(min-width: 821px){
-    .contentContainer{
-        margin: 0;
+    .contentContainerTop,
+    .contentContainerBottom{
+        // margin: 0;
+        // margin-top: -12%;
         width: 100%;
+        // margin-bottom: -10%;
     }
-    .cardContainer{
-        display: flex;
-        .card{
-            padding: 1rem;
-            margin: 0 1rem 0 1rem;
-            border: solid 1px getColor(black);
+    // .cardContainer{
+    //     display: flex;
+    //     // position: absolute;
+    //     // top: 100%;
+    //     .card{
+    //         padding: 1rem;
+    //         margin: 0 1rem 0 1rem;
+    //         border: solid 1px getColor(black);
+    //     }
+    // }
+    .section{
+        position: absolute;
+        margin-left: 2%;
+        top: -10%;
+        .bookBtn {
+            width: 35%;
+            padding: .6rem;
         }
     }
+    .cardContainer {
+        display: flex;
+        justify-content:center;
+    }
+    .card{
+        position: absolute;
+        top: 150%;
+    }
+    .cardContent{       
+        width: 20%;
+        margin: 2%;
+    }
+
     .infocard{
         width: 35%;
         margin: 0 0 1rem 0;
@@ -64,22 +92,24 @@
         font-size: .9rem;
     }
 
-    .section {
-        z-index: 1000;
-        position: sticky;
-        top: 15%;
-        bottom: 50%;
-        margin-left: 2%;
-        margin-bottom: 0;
-        margin-top: 0;
-        .bookBtn{
-            width: 35%;
-            padding: .6rem;
-        }
-    }
-    .card1 {
-        z-index: 1000;
-        position: sticky;
-        top: 30%;
-    }
+    // .section {
+    //     z-index: 1000;
+    //     position: sticky;
+    //     top: 15%;
+    //     // bottom: 20%;
+    //     margin-left: 2%;
+    //     margin-bottom: 0;
+    //     margin-top: 0;
+    //     .bookBtn{
+    //         width: 35%;
+    //         padding: .6rem;
+    //     }
+    // }
+    // .card1 {
+    //     z-index: 1000;
+    //     position: sticky;
+    //     top: 20%;
+    //     bottom: 20%;
+    //     // margin-bottom: 54%;
+    // }
 }

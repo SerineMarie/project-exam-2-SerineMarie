@@ -41,6 +41,11 @@ export default function LoginForm(){
             saveToken(response.data.jwt);
             saveUser(response.data.user);
             location.href = "/adminPage";
+            
+        })
+
+        .then(response =>{
+            setSubmitting(false)
         })
     }
 
