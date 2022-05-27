@@ -37,7 +37,7 @@ export default function BookingForm(){
         // const token = getToken();
         console.log(data);
         setSubmitting(true);
-        axios.post(bookingUrl, {
+        const bookingDetails = {
             "data": {
                 "fullname": data.fullname,
                 "checkIn": data.checkIn,
@@ -45,23 +45,49 @@ export default function BookingForm(){
                 "howMany": data.howMany,
                 "hotelMessage": data.hotelMessage,
             }
-        },{
+        }
+        const header = {
             headers: {
                 ContentType: `application/json`,
             }
         }
-        )
-        .then(response => {
-            if(endDate === startDate){
-                alert("Please choose different check in date")
-            }
-            setSubmitting(true);
+        try{
+            const response = await axios.post(bookingUrl, bookingDetails, header)
+            console.log(response);
+        }catch(error){
+            console.log(error);
+            setSubmitting("Incorrect credentials");
             e.target.reset();
+        } finally{
+            setSubmitting(true)
+        }
+
+
+        // axios.post(bookingUrl, {
+        //     "data": {
+        //         "fullname": data.fullname,
+        //         "checkIn": data.checkIn,
+        //         "checkOut": data.checkOut,
+        //         "howMany": data.howMany,
+        //         "hotelMessage": data.hotelMessage,
+        //     }
+        // },{
+        //     headers: {
+        //         ContentType: `application/json`,
+        //     }
+        // }
+        // )
+        // .then(response => {
+        //     if(endDate === startDate){
+        //         alert("Please choose different check in date")
+        //     }
+        //     setSubmitting(true);
+        //     e.target.reset();
             
-        })
-        .then(response =>{
-            setSubmitting(false)
-        })
+        // })
+        // .then(response =>{
+        //     setSubmitting(false)
+        // })
     }
     console.log(errors);
 
@@ -70,7 +96,7 @@ export default function BookingForm(){
             <div className={styles.fullname}>
                 <p>Fullname</p>
                 <input {...register("fullname")} placeholder="Full name" className={styles.formInput}/>
-                {errors.fullname && <span className={styles.formError}>{errors.fullname.message}</span>}
+                {errors.fullname && <span className={styles.inputError}>{errors.fullname.message}</span>}
             </div>
             <div className={styles.howMany}>
                 <p>Guest(s)</p>
@@ -82,7 +108,7 @@ export default function BookingForm(){
                     <option>5 people</option>
                     <option>5+ people</option>
                 </select>
-                {errors.howMany && <span className={styles.formError}>{errors.howMany.message}</span>}
+                {errors.howMany && <span className={styles.inputError}>{errors.howMany.message}</span>}
             </div>
             <div className={styles.checkIn}>
                 <p>Check In</p>

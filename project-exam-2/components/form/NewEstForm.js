@@ -31,13 +31,19 @@ export default function NewEstForm(){
         resolver: yupResolver(schema),
     });
 
-    // const formData = new FormData();
     
     async function onSubmit(data, e){
         const token = getToken();
         setSubmitting(true);
         console.log(data);
-        axios.post(url, {
+
+        const formData = new FormData();
+        
+        if(addImage.files.length === 0){
+            return alert("Please add an image")
+        }
+        const file = addImage.files[0];
+        const newHotel = {
             "data":{
                 "name": data.hotelname,
                 "location": data.location,
@@ -45,64 +51,98 @@ export default function NewEstForm(){
                 "excerpt": data.excerpt,
                 "slug": data.slug,
                 "description": data.description,
-                // "images": data.images
-            }
-        }, 
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
+                "images": data.images
             }
         }
-        )
-            .then(response => {
-                setSubmitting(true);
-                e.target.reset();
-            }) 
+        const header = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }         
+        }
+        formData.append("files.image", file, file.name)
+        formData.append("data", JSON.stringify(data));
+    
+        try{
+            const response = await axios.post(url, newHotel, formData, header);
+            console.log(response)
+    
+        } catch(error){
+            console.log(error)
+            e.target.reset();
+            setSubmitting("Incorrect credentials");
+        } finally{
+            setSubmitting(true);
+        }
 
-            .then(response =>{
-                setSubmitting(false)
-            })
+        // axios.post(url, {
+        //     "data":{
+        //         "name": data.hotelname,
+        //         "location": data.location,
+        //         "price": data.price,
+        //         "excerpt": data.excerpt,
+        //         "slug": data.slug,
+        //         "description": data.description,
+        //         // "images": data.images
+        //     }
+        // }, 
+        // {
+        //     headers: {
+        //         Authorization: `Bearer ${token}`,
+        //     }
+        // }
+        // )
+        //     .then(response => {
+        //         setSubmitting(true);
+        //         e.target.reset();
+        //     }) 
+
+        //     .then(response =>{
+        //         setSubmitting(false)
+        //     })
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.newEstForm} disabled={submitting}>
-            <div className={styles.hotelName}>
-                <p>Hotel name</p>
-                <input {...register("hotelname")} placeholder="Hotelname" className={styles.formInput}/>
-                {errors.hotelname && <span className={styles.formError}>{errors.hotelname.message}</span>}
-            </div>
-            <div className={styles.location}>
-                <p>Location/ address</p>
-                <input {...register("location")} placeholder="Location/ address" className={styles.formInput}/>
-                {errors.location && <span className={styles.formError}>{errors.location.message}</span>}
-            </div>
-            <div className={styles.addImage}>
-                <p>Images</p>
-                <input {...register("images")} placeholder="Images" type="file" name="images" className={styles.formInput}/>
-                {errors.images && <span className={styles.formError}>{errors.images.message}</span>}
-            </div>
-            <div className={styles.excerpt}>
-                <p>Hotel excerpt</p>
-                <input {...register("excerpt")} placeholder="Hotel excerpt" className={styles.formInput}/>
-                {errors.excerpt && <span className={styles.formError}>{errors.excerpt.message}</span>}
-            </div>
-            <div className={styles.price}>
-                <p>Hotel price</p>
-                <input {...register("price")} placeholder="Hotel price" className={styles.formInput}/>
-                {errors.price && <span className={styles.formError}>{errors.price.message}</span>}
-            </div>
-            <div className={styles.slug}>
-                <p>Hotel slug</p>
-                <input {...register("slug")} placeholder="Hotel slug" className={styles.formInput}/>
-                {errors.slug && <span className={styles.formError}>{errors.slug.message}</span>}
-            </div>
-            <div className={styles.textarea}>
-                <p>Hotel description</p>
-                <textarea {...register("description")} placeholder="Hotel description" className={styles.formMessage}/>
-                {errors.excerpt && <span className={styles.formError}>{errors.description.message}</span>}
-            </div>
-            <button className={styles.addBtn}>{submitting ? "Adding.." : "Add"}</button>
-        </form>
+        <>
+            {submitting && <div className={styles.formError}>{submitting}</div>}
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.newEstForm} disabled={submitting}>
+                <div className={styles.hotelName}>
+                    <p>Hotel name</p>
+                    <input {...register("hotelname")} placeholder="Hotelname" className={styles.formInput}/>
+                    {errors.hotelname && <span className={styles.inputError}>{errors.hotelname.message}</span>}
+                </div>
+                <div className={styles.location}>
+                    <p>Location/ address</p>
+                    <input {...register("location")} placeholder="Location/ address" className={styles.formInput}/>
+                    {errors.location && <span className={styles.inputError}>{errors.location.message}</span>}
+                </div>
+                <div className={styles.addImage}>
+                    <p>Images</p>
+                    <input {...register("images")} placeholder="Images" type="file" name="images" className={styles.formInput}/>
+                    {errors.images && <span className={styles.inputError}>{errors.images.message}</span>}
+                </div>
+                <div className={styles.excerpt}>
+                    <p>Hotel excerpt</p>
+                    <input {...register("excerpt")} placeholder="Hotel excerpt" className={styles.formInput}/>
+                    {errors.excerpt && <span className={styles.inputError}>{errors.excerpt.message}</span>}
+                </div>
+                <div className={styles.price}>
+                    <p>Hotel price</p>
+                    <input {...register("price")} placeholder="Hotel price" className={styles.formInput}/>
+                    {errors.price && <span className={styles.inputError}>{errors.price.message}</span>}
+                </div>
+                <div className={styles.slug}>
+                    <p>Hotel slug</p>
+                    <input {...register("slug")} placeholder="Hotel slug" className={styles.formInput}/>
+                    {errors.slug && <span className={styles.inputError}>{errors.slug.message}</span>}
+                </div>
+                <div className={styles.textarea}>
+                    <p>Hotel description</p>
+                    <textarea {...register("description")} placeholder="Hotel description" className={styles.formMessage}/>
+                    {errors.excerpt && <span className={styles.inputError}>{errors.description.message}</span>}
+                </div>
+                <button className={styles.addBtn}>{submitting ? "Adding.." : "Add"}</button>
+            </form>
+        </>
     )
    
 }

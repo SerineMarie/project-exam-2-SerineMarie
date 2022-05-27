@@ -9,59 +9,26 @@ display: none;
     width: 90%;
 }
 
-@media (min-width: 821px){
+@media(min-width: 821px){
+    .bgImage{
+        display: block;
+        min-height: 100%;
+        width: 100%;
+        height: auto
+    }
+}
+
+@media (min-width: 1021px){
     .bgImage{
         display: block;
         min-height: 100%;
         width: 100%;
         height: auto;
-        // margin-top: -45%;
     }
     .bgImage2{
         display: block;
         min-height: 100%;
         width: 100%;
         height: auto;
-        // margin-bottom: -40%;      
     }
 }
-// @media (min-width: 825px) and (max-width: 850px){
-//     .bgImage{
-//         margin-top: -45%;
-//     }
-// }
-
-// @media (min-width: 851px) and (max-width: 1000px){
-//     .bgImage{
-//         margin-top: -35%;
-//     }
-//     // .bgImage2{
-//     //     margin-bottom: -30%;      
-//     // }
-// }
-
-// @media (min-width: 1001px) and (max-width: 1120px){
-//     .bgImage{
-//         margin-top: -30%;
-//     }
-//     // .bgImage2{
-//     //     margin-bottom: -50%;      
-//     // }
-// }
-
-// @media (min-width: 1121px) and (max-width: 1280px){
-//     .bgImage{
-//         margin-top: -25%;
-//     }
-// }
-// @media (min-width: 1281px) and (max-width: 1500px){
-//     .bgImage{
-//         margin-top: -20%;
-//     }
-// }
-
-// @media (min-width: 1500px){
-//     .bgImage{
-//         margin-top: 0;
-//     }
-// }

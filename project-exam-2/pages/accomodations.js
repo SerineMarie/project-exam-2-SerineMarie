@@ -15,10 +15,16 @@ export default function Accomodations(props){
       <div className={styles.container}>
         <Heading title="Accomodations"/>
         {props.accomodations.data.map((hotel)=>{
+          console.log(hotel);
+
+          let imageUrl = "http://placehold.jp/fafafa/0016ff/150x150.png?text=No%20image";
+          if(hotel.attributes.images.data){
+            imageUrl = hotel.attributes.images.data[0].attributes.url;
+          }
           return(
             <div key={hotel.slug} className={styles.accomodationsCard}>
               <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.accomodationsContent}>
-                <img src={hotel.attributes.images.data[0].attributes.url} className={styles.images}></img>
+                <img src={imageUrl} className={styles.images}></img>
                 <div>
                   <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
                   <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>

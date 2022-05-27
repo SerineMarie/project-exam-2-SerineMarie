@@ -26,10 +26,12 @@ function ContactForm (){
         resolver: yupResolver(schema),
     });
 
+
     function onSubmit(data, e){
         console.log(data);
-        setSubmitting(true)
-        axios.post(contactUrl, {
+        setSubmitting(true);
+
+        const credentials = {
             "data": {
                 "fullname": data.fullname,
                 "email": data.email,
@@ -37,30 +39,49 @@ function ContactForm (){
                 "message": data.contactMessage
             }
         }
-        )
-        .then(response => {
-            setSubmitting(true);
-            e.target.reset();
-        }) 
 
-        .then(response =>{
-            setSubmitting(false)
-        })
+        try{
+            const response = await axios.post(contactUrl, credentials)
+            console.log(response)
+        } catch(error){
+            console.log(error);
+            setSubmitting("Incorrect credentials")
+            e.target.reset();
+        } finally{
+            setSubmitting(true)
+        }
+
+        // axios.post(contactUrl, {
+        //     "data": {
+        //         "fullname": data.fullname,
+        //         "email": data.email,
+        //         "subject": data.subject,
+        //         "message": data.contactMessage
+        //     }
+        // }
+        // )
+        // .then(response => {
+        //     setSubmitting(true);
+        //     e.target.reset();
+        // }) 
+
+        // .then(response =>{
+        //     setSubmitting(false)
+        // })
     }
-    console.log(errors);
 
     return (
             <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                 <div className={styles.fullname}>
                     <p>Full name</p>
                     <input {...register("fullname")} placeholder="Full name" className={styles.formInput}/>
-                    {errors.fullname && <span className={styles.formError}>{errors.fullname.message}</span>}
+                    {errors.fullname && <span className={styles.inputError}>{errors.fullname.message}</span>}
                 </div>
 
                 <div className={styles.email}>
                     <p>Email</p>
                     <input {...register("email")} placeholder="Email" className={styles.formInput}/>
-                    {errors.email && <span className={styles.formError}>{errors.email.message}</span>}
+                    {errors.email && <span className={styles.inputError}>{errors.email.message}</span>}
                 </div>
 
                 <div className={styles.subject}>
@@ -71,13 +92,13 @@ function ContactForm (){
                         <option>Question about hotel</option>
                         <option>Other</option>
                     </select>
-                    {errors.subject && <span className={styles.formError}>{errors.subject.message}</span>}
+                    {errors.subject && <span className={styles.inputError}>{errors.subject.message}</span>}
                 </div>
 
                 <div className={styles.textarea}>
                     <p>Message</p>
                     <textarea {...register("message")} placeholder="Message" className={styles.formMessage}/>
-                    {errors.contactMessage && <span className={styles.formError}>{errors.message.message}</span>}
+                    {errors.contactMessage && <span className={styles.inputError}>{errors.message.message}</span>}
                 </div>
                 <button className={styles.submitBtn}>{submitting ? "Sending.." : "Send"}</button>
             </form>

@@ -8,6 +8,7 @@ $colors: (
     gray: #707070,
     black: #000000,
     error: #ff530d,
+    formError: #ea5050,
 );
 
 @function getColor($color){

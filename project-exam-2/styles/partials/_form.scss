@@ -38,10 +38,15 @@
     box-sizing: border-box;
 }
 
-.formError {
+.inputError {
     color: getColor(error);
     margin-top: -1%;
     margin-bottom: 1rem;
+}
+.formError{
+    background: getColor(formError);
+    padding: .5rem;
+    width: 20%;
 }
 
 .howMany select, 
