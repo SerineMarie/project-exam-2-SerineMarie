@@ -29,7 +29,7 @@ export default function LoginForm(){
         resolver: yupResolver(schema),
     });
 
-    async function onSubmit(data){
+    async function onSubmit(data, e){
         setSubmitting(true);
         setLoginError(null);
         console.log(data);
@@ -46,6 +46,7 @@ export default function LoginForm(){
             router.push("/adminPage");
         } catch(error){
             setLoginError("Incorrect username and password");
+            e.target.reset();
         } finally{
             setSubmitting(false)
         }

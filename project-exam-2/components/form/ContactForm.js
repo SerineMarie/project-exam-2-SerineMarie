@@ -14,9 +14,11 @@ const schema = yup.object().shape({
     message: yup.string().required("Please fill out message form").min(10, "The message must have at least 10 characters")
 });
 
-function ContactForm (){
+export default function ContactForm (){
     const contactUrl = BASE_URL + "/contactpages?populate=*";
     const [submitting, setSubmitting] = useState(false);
+    const [formError, setFormError] = useState(false);
+
 
     const {
         register, 
@@ -27,7 +29,7 @@ function ContactForm (){
     });
 
 
-    function onSubmit(data, e){
+    async function onSubmit(data, e){
         console.log(data);
         setSubmitting(true);
 
@@ -39,38 +41,22 @@ function ContactForm (){
                 "message": data.contactMessage
             }
         }
-
         try{
             const response = await axios.post(contactUrl, credentials)
             console.log(response)
         } catch(error){
             console.log(error);
-            setSubmitting("Incorrect credentials")
+            setformError("Incorrect credentials")
             e.target.reset();
         } finally{
             setSubmitting(true)
+            e.target.reset();
         }
-
-        // axios.post(contactUrl, {
-        //     "data": {
-        //         "fullname": data.fullname,
-        //         "email": data.email,
-        //         "subject": data.subject,
-        //         "message": data.contactMessage
-        //     }
-        // }
-        // )
-        // .then(response => {
-        //     setSubmitting(true);
-        //     e.target.reset();
-        // }) 
-
-        // .then(response =>{
-        //     setSubmitting(false)
-        // })
     }
 
     return (
+        <>
+            {formError && <div className={styles.formError}>{formError}</div>}
             <form onSubmit={handleSubmit(onSubmit)} className={styles.contactForm}>
                 <div className={styles.fullname}>
                     <p>Full name</p>
@@ -102,7 +88,6 @@ function ContactForm (){
                 </div>
                 <button className={styles.submitBtn}>{submitting ? "Sending.." : "Send"}</button>
             </form>
+        </>
     )
 }
-
-export default ContactForm;

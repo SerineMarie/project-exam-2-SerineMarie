@@ -12,13 +12,14 @@ import axios from "axios";
 
 const schema = yup.object().shape({
     howMany: yup.string().required("Please choose how many people"),
-    hotelMessage: yup.string(),
+    contactMessage: yup.string(),
 });
 
 export default function BookingForm(){
     const bookingUrl = BASE_URL + "/bookings?populate=*";
 
     const [submitting, setSubmitting] = useState(false);
+    const [formError, setFormError] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date())
 
@@ -33,7 +34,7 @@ export default function BookingForm(){
     });
 
 
-    function onSubmit(data, e){
+    async function onSubmit(data, e){
         // const token = getToken();
         console.log(data);
         setSubmitting(true);
@@ -43,7 +44,7 @@ export default function BookingForm(){
                 "checkIn": data.checkIn,
                 "checkOut": data.checkOut,
                 "howMany": data.howMany,
-                "hotelMessage": data.hotelMessage,
+                "contactMessage": data.contactMessage,
             }
         }
         const header = {
@@ -56,90 +57,67 @@ export default function BookingForm(){
             console.log(response);
         }catch(error){
             console.log(error);
-            setSubmitting("Incorrect credentials");
+            setFormError("Incorrect credentials");
             e.target.reset();
         } finally{
             setSubmitting(true)
+            e.target.reset();
         }
-
-
-        // axios.post(bookingUrl, {
-        //     "data": {
-        //         "fullname": data.fullname,
-        //         "checkIn": data.checkIn,
-        //         "checkOut": data.checkOut,
-        //         "howMany": data.howMany,
-        //         "hotelMessage": data.hotelMessage,
-        //     }
-        // },{
-        //     headers: {
-        //         ContentType: `application/json`,
-        //     }
-        // }
-        // )
-        // .then(response => {
-        //     if(endDate === startDate){
-        //         alert("Please choose different check in date")
-        //     }
-        //     setSubmitting(true);
-        //     e.target.reset();
-            
-        // })
-        // .then(response =>{
-        //     setSubmitting(false)
-        // })
     }
     console.log(errors);
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.bookingForm}>
-            <div className={styles.fullname}>
-                <p>Fullname</p>
-                <input {...register("fullname")} placeholder="Full name" className={styles.formInput}/>
-                {errors.fullname && <span className={styles.inputError}>{errors.fullname.message}</span>}
-            </div>
-            <div className={styles.howMany}>
-                <p>Guest(s)</p>
-                <select {...register("howMany")}>
-                    <option>1 person</option>
-                    <option>2 people</option>
-                    <option>3 people</option>
-                    <option>4 people</option>
-                    <option>5 people</option>
-                    <option>5+ people</option>
-                </select>
-                {errors.howMany && <span className={styles.inputError}>{errors.howMany.message}</span>}
-            </div>
-            <div className={styles.checkIn}>
-                <p>Check In</p>
-                <div>
-                    <DatePicker wrapperClassName={styles.datePicker}
-                        selected= {startDate} 
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                        onChange={date => setStartDate(date)}
-                    />
+        <>
+            {formError && <div className={styles.formError}>{formError}</div>}
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.bookingForm}>
+                <div className={styles.fullname}>
+                    <p>Fullname</p>
+                    <input {...register("fullname")} placeholder="Full name" className={styles.formInput}/>
+                    {errors.fullname && <span className={styles.inputError}>{errors.fullname.message}</span>}
                 </div>
-            </div>
-            <div className={styles.checkOut}>
-                <p>Check Out</p>
-                <div>
-                    <DatePicker wrapperClassName={styles.datePicker}
-                        selected= {endDate} 
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        onChange={date => setEndDate(date)}
-                    />
+                <div className={styles.howMany}>
+                    <p>Guest(s)</p>
+                    <select {...register("howMany")}>
+                        <option>1 person</option>
+                        <option>2 people</option>
+                        <option>3 people</option>
+                        <option>4 people</option>
+                        <option>5 people</option>
+                        <option>5+ people</option>
+                    </select>
+                    {errors.howMany && <span className={styles.inputError}>{errors.howMany.message}</span>}
                 </div>
-            </div>
-            <div className={styles.textarea}>
-                <p>Message for the hotel (optional)</p>
-                <textarea {...register("hotelMessage")} placeholder="Message for hotel (optional)" className={styles.formMessage}/>
-            </div>
-            <button className={styles.submitBtn}>{submitting ? "Submitting.." : "Submit"}</button>
-        </form>
+                <div className={styles.checkIn}>
+                    <p>Check In</p>
+                    <div>
+                        <DatePicker wrapperClassName={styles.datePicker}
+                            selected= {startDate} 
+                            selectsStart
+                            startDate={startDate}
+                            endDate={endDate}
+                            onChange={date => setStartDate(date)}
+                        />
+                    </div>
+                </div>
+                <div className={styles.checkOut}>
+                    <p>Check Out</p>
+                    <div>
+                        <DatePicker wrapperClassName={styles.datePicker}
+                            selected= {endDate} 
+                            selectsEnd
+                            startDate={startDate}
+                            endDate={endDate}
+                            minDate={startDate}
+                            onChange={date => setEndDate(date)}
+                        />
+                    </div>
+                </div>
+                <div className={styles.textarea}>
+                    <p>Message for the hotel (optional)</p>
+                    <textarea {...register("contactMessage")} placeholder="Message for hotel (optional)" className={styles.formMessage}/>
+                </div>
+                <button className={styles.submitBtn}>{submitting ? "Submitting.." : "Submit"}</button>
+            </form>
+        </>
     )
 }

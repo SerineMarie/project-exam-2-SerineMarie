@@ -72,33 +72,9 @@ export default function NewEstForm(){
             setSubmitting("Incorrect credentials");
         } finally{
             setSubmitting(true);
+            e.target.reset();
+
         }
-
-        // axios.post(url, {
-        //     "data":{
-        //         "name": data.hotelname,
-        //         "location": data.location,
-        //         "price": data.price,
-        //         "excerpt": data.excerpt,
-        //         "slug": data.slug,
-        //         "description": data.description,
-        //         // "images": data.images
-        //     }
-        // }, 
-        // {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //     }
-        // }
-        // )
-        //     .then(response => {
-        //         setSubmitting(true);
-        //         e.target.reset();
-        //     }) 
-
-        //     .then(response =>{
-        //         setSubmitting(false)
-        //     })
     }
 
     return(
