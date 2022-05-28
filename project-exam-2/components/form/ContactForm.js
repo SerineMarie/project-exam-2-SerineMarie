@@ -11,7 +11,7 @@ const schema = yup.object().shape({
     fullname: yup.string().required("Please enter your full name").min(3, "There must be at least three characters"),
     email: yup.string().required("Please enter your email address").email("Email address not valid"),
     subject: yup.string().required("Please choose subject"),
-    message: yup.string().required("Please fill out message form").min(10, "The message must have at least 10 characters")
+    contactMessage: yup.string().required("Please fill out message form").min(10, "The message must have at least 10 characters")
 });
 
 export default function ContactForm (){
@@ -40,7 +40,7 @@ export default function ContactForm (){
                 "fullname": data.fullname,
                 "email": data.email,
                 "subject": data.subject,
-                "message": data.contactMessage
+                "contactMessage": data.contactMessage,
             }
         }
         try{
@@ -48,12 +48,12 @@ export default function ContactForm (){
             console.log(response)
         } catch(error){
             console.log(error);
-            setformError("Incorrect credentials")
+            setFormError("Incorrect credentials")
             e.target.reset();
         } finally{
             setFormSendt("Message sendt")
             e.target.reset();
-            setSubmitting(true)
+            setSubmitting(true);
         }
     }
 
@@ -87,7 +87,7 @@ export default function ContactForm (){
 
                 <div className={styles.textarea}>
                     <p>Message</p>
-                    <textarea {...register("message")} placeholder="Message" className={styles.formMessage}/>
+                    <textarea {...register("contactMessage")} placeholder="Message" className={styles.formMessage}/>
                     {errors.contactMessage && <span className={styles.inputError}>{errors.message.message}</span>}
                 </div>
                 <button className={styles.submitBtn}>{submitting ? "Sending.." : "Send"}</button>

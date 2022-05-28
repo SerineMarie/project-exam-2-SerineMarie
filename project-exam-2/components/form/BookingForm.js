@@ -12,7 +12,7 @@ import axios from "axios";
 
 const schema = yup.object().shape({
     howMany: yup.string().required("Please choose how many people"),
-    contactMessage: yup.string(),
+    message: yup.string(),
 });
 
 export default function BookingForm(){
@@ -39,13 +39,14 @@ export default function BookingForm(){
         // const token = getToken();
         console.log(data);
         setSubmitting(true);
+
         const bookingDetails = {
             "data": {
                 "fullname": data.fullname,
                 "checkIn": data.checkIn,
                 "checkOut": data.checkOut,
                 "howMany": data.howMany,
-                "contactMessage": data.contactMessage,
+                "message": data.message,
             }
         }
         const header = {
@@ -62,8 +63,8 @@ export default function BookingForm(){
             e.target.reset();
         } finally{
             setFormSendt("Booking sendt")
-            setSubmitting(true)
             e.target.reset();
+            setSubmitting(true)
         }
     }
     console.log(errors);
@@ -117,7 +118,7 @@ export default function BookingForm(){
                 </div>
                 <div className={styles.textarea}>
                     <p>Message for the hotel (optional)</p>
-                    <textarea {...register("contactMessage")} placeholder="Message for hotel (optional)" className={styles.formMessage}/>
+                    <textarea {...register("message")} placeholder="Message for hotel (optional)" className={styles.formMessage}/>
                 </div>
                 <button className={styles.submitBtn}>{submitting ? "Submitting.." : "Submit"}</button>
             </form>

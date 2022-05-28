@@ -40,10 +40,10 @@ export default function NewEstForm(){
 
         const formData = new FormData();
         
-        if(addImage.files.length === 0){
+        if(images.files.length === 0){
             return alert("Please add an image")
         }
-        const file = addImage.files[0];
+        const file = images.files[0];
         const newHotel = {
             "data":{
                 "name": data.hotelname,

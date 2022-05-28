@@ -21,6 +21,7 @@ export default function Accomodations(props){
           if(hotel.attributes.images.data){
             imageUrl = hotel.attributes.images.data[0].attributes.url;
           }
+          
           return(
             <div key={hotel.slug} className={styles.accomodationsCard}>
               <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.accomodationsContent}>
