@@ -14,7 +14,7 @@ export default function AdminContact(props){
                 <Heading title="Contacts"/>
                 <div className={styles.contactContent}>
                 {props.adminContact.data.map((contacts) =>{
-                    return( <div className={styles.contactContainer}>
+                    return( <div className={styles.contactContainer} key={contacts.id}>
                               <h2 className={styles.subTitle}>Contact number: {contacts.id}</h2>
                               <p>From: {contacts.attributes.email}</p>
                               <p>Name: {contacts.attributes.fullname}</p>
