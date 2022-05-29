@@ -43,7 +43,7 @@ export default function SearchBar(){
             </input>
             <a className={styles.alternativeContainer}>
                 {alternative && alternative.map((alternative, i) => 
-                <div key={alternative.id}>
+                <div key={alternative.slug}>
                     <a href={`accomodation/${alternative.attributes.slug}`} 
                     className={styles.searchResults} 
                     key={i} 
