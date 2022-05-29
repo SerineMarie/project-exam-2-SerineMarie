@@ -9,8 +9,8 @@
         width: 100%;
     }
     .bookBtn{
-        width: 100%;
-        padding: 2%;
+        width: 50%;
+        padding: 1%;
         cursor: pointer;
     }
     .readMoreBtn {
@@ -26,7 +26,6 @@
 }
 
 @media (min-width: 821px){
-
     .accomodationsContainer {
         display: flex;
         flex-direction: column;
@@ -34,31 +33,17 @@
         align-items: center;
     }
     .accomodationsCard{
+        display: flex;
+        flex-wrap: wrap;
         margin: 0 0 1rem 0;
         width: 75%;
-        .bookBtn{
-            width: 50%;
-            padding: 1%;
-            position: relative;
-            left: 50%;
-            width: 50%;
-            padding: 1%;
-            
-        }
-    }
-    .accomodationsContent {
-        display: flex;
+
         .images{
             width: 40%;
             margin: 1%;
         }
-
-    }
-    .bottomContainer{
-        .price{
-        position: relative;
-        left: 55%;
-    }
-    }
-    
+        .accomodationsText{
+            width: 50%;
+        }
+    } 
 }

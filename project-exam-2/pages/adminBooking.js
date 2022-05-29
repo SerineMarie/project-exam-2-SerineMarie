@@ -14,7 +14,7 @@ export default function AdminBooking(props){
                 <Heading title="Bookings"/>
                 <div className={styles.bookingContent}>
                   {props.enquiryPage.data.map((bookings) =>{
-                      return( <div className={styles.bookingContainer}>
+                      return( <div className={styles.bookingContainer} key={bookings.id}>
                                 <h2 className={styles.subTitle}>Booking {bookings.id}</h2>
                                 <p>Name: {bookings.attributes.fullname}</p>
                                 <p>How many: {bookings.attributes.howMany}</p>
@@ -32,16 +32,13 @@ export default function AdminBooking(props){
 export async function getStaticProps(){
     const enquiryUrl = BASE_URL + "/bookings?populate=*";
     let enquiryPage = [];
-  
     try {
       const response = await axios.get(enquiryUrl);
       enquiryPage = response.data;
-      
     } catch(error){
       DisplayMessage(`An error occured`, {error})
       console.log(error)
     }
-  
     return {
       props: {
         enquiryPage: enquiryPage,

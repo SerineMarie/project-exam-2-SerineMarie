@@ -26,7 +26,7 @@ export default function Accomodation({accomodation}){
                             width="100%">
                             {accomodation.attributes.images.data.map((image) => {
                                 return(
-                                    <div className={styles.carouselImage}>
+                                    <div className={styles.carouselImage} key={image.id}>
                                         <img className={styles.images} src={image.attributes.url}></img>
                                     </div>
                                 )

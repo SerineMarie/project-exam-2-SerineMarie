@@ -32,7 +32,7 @@ export default function Home(props) {
               {props.content.data.attributes.hotels.data.map((shortcut) =>{
                 return <section className={styles.cardContent} key={shortcut.id}>
                           <a href={`/accomodation/${shortcut.attributes.slug}`}>
-                          <img src={props.content.data.attributes.images.data[4].attributes.url} className={styles.images}></img>
+                            <img src={props.content.data.attributes.images.data[4].attributes.url} className={styles.images}></img>
                             <h2 key={shortcut.attributes.id} className={styles.subTitle}>{shortcut.attributes.name}</h2>
                             <p>{shortcut.attributes.excerpt}</p>
                             <button className={styles.infoBtn}>Read more...</button>
