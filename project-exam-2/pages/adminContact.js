@@ -7,12 +7,12 @@ import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 import AdminLayout from "../components/common/layout/AdminLayout";
 
 export default function AdminContact(props){
-    console.log(props)
     return(
         <AdminLayout>
             <Head title="Contacts"/>
             <div className={styles.container}>
                 <Heading title="Contacts"/>
+                <div className={styles.contactContent}>
                 {props.adminContact.data.map((contacts) =>{
                     return( <div className={styles.contactContainer}>
                               <h2 className={styles.subTitle}>Contact number: {contacts.id}</h2>
@@ -22,18 +22,17 @@ export default function AdminContact(props){
                             </div> 
                   )  
                 })}
+                </div>
             </div>
         </AdminLayout>
     )
 }
-
 export async function getStaticProps(){
     const adminContactUrl = BASE_URL + "/contactpages?populate=*";
     let adminContact = [];
   
     try {
       const response = await axios.get(adminContactUrl);
-      console.log(response.data);
       adminContact = response.data;
       
     } catch(error){

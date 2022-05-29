@@ -7,16 +7,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/Home.module.scss";
 import { BASE_URL } from "../../constans/api";
 import axios from "axios";
-// import { getToken } from "../../utils/storage";
-
 
 const schema = yup.object().shape({
+    fullname: yup.string().required("Please enter your full name"),
     howMany: yup.string().required("Please choose how many people"),
     message: yup.string(),
 });
 
 export default function BookingForm(){
-    const bookingUrl = BASE_URL + "/bookings?populate=*";
+    const bookingUrl = BASE_URL + "/bookings";
 
     const [submitting, setSubmitting] = useState(false);
     const [formSendt, setFormSendt] = useState(false);
@@ -36,8 +35,6 @@ export default function BookingForm(){
 
 
     async function onSubmit(data, e){
-        // const token = getToken();
-        console.log(data);
         setSubmitting(true);
 
         const bookingDetails = {
@@ -51,24 +48,22 @@ export default function BookingForm(){
         }
         const header = {
             headers: {
-                ContentType: `application/json`,
+                "Content-Type": `application/json`,
             }
         }
         try{
             const response = await axios.post(bookingUrl, bookingDetails, header)
-            console.log(response);
+            setFormSendt("Booking sendt")
         }catch(error){
             console.log(error);
             setFormError("Incorrect credentials");
             e.target.reset();
         } finally{
-            setFormSendt("Booking sendt")
             e.target.reset();
-            setSubmitting(true)
+            setSubmitting(false)
         }
     }
-    console.log(errors);
-
+    
     return(
         <>
             {formError && <div className={styles.formError}>{formError}</div>}

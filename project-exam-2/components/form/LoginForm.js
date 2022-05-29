@@ -32,13 +32,11 @@ export default function LoginForm(){
     async function onSubmit(data, e){
         setSubmitting(true);
         setLoginError(null);
-        console.log(data);
 
         const credentials = {   
             identifier: data.username,
             password: data.password
         }
-        
         try{
             const response = await axios.post(url, credentials);
             saveToken(response.data.jwt);
@@ -50,7 +48,6 @@ export default function LoginForm(){
         } finally{
             setSubmitting(false)
         }
-
     }
 
     return(

@@ -1,9 +1,18 @@
 .title {
+    margin-left: 1%;
     font-weight: 500;
     color: getColor(primary);
 }
 
 .subTitle{
     font-weight: 300;
+    font-size: 2rem;
     color: getColor(primary);
+}
+
+.h3{
+    margin-left: 1%;
+    color: getColor(black);
+    font-size: 1.3rem;
+    font-weight: 400;
 }

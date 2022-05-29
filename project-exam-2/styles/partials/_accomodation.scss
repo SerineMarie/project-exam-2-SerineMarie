@@ -1,4 +1,4 @@
-.imageContainer{
+.carouselContainer{
      width: 70%;
      margin: 0;
 }
@@ -12,7 +12,9 @@
 }
 
 @media(min-width: 821px){
-
-
+    .carouselContainer{
+        width: 60%;
+        border: none;
+    }
 }
 

@@ -8,7 +8,6 @@ import ContactForm from '../components/form/ContactForm';
 import DisplayMessage from '../components/common/displayMessage/DisplayMessage';
 
 export default function Contact(props) {
-  console.log(props)
   return (
     <Layout>
       <Head title="Contact"/>
@@ -20,14 +19,12 @@ export default function Contact(props) {
   )
 }
 
-
 export async function getStaticProps(){
   const contactUrl = BASE_URL + "/contactpages?populate=*";
   let contactpage = [] ;
 
   try {
     const response = await axios.get(contactUrl)
-    console.log(response.data);
     contactpage = response.data;
   } catch(error){
     DisplayMessage(`An error occured`, {error})

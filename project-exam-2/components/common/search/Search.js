@@ -13,7 +13,6 @@ export default function SearchBar(){
     useEffect(() => {
       const loadHotels = async()=>{
           const response = await axios.get(searchAPI);
-          console.log(response.data.data)
           setSearchHotel(response.data.data)
       }
       loadHotels();
@@ -33,7 +32,6 @@ export default function SearchBar(){
         setAlternative(matches)
         setInputValue(inputValue)
     }
-
     return (
         <>
             <input type="text" placeholder="Search..." 

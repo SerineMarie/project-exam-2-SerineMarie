@@ -51,7 +51,7 @@
         text-decoration: none;
         color: getColor(black); 
         &.active {
-            color: getColor(primary);
+            color: getColor(primary) !important; 
         }
     }
 }

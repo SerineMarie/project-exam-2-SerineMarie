@@ -6,15 +6,12 @@ import Layout from '../components/common/layout/Layout';
 import Head from "../components/common/head/Head";
 import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 
-
 export default function Home(props) {
-  console.log(props)
 
   const router = useRouter();
   return (
     <Layout>
       <Head title={props.content.data.attributes.title}/>
-      <div className={styles.contentContainer}>
           <div className={styles.containerTop}>
             <div className={styles.imageContainer}>
               <img src={props.content.data.attributes.images.data[1].attributes.url} className={styles.bgImage}></img>
@@ -43,7 +40,6 @@ export default function Home(props) {
                 })}
             </div>
           </div>
-        </div>
     </Layout>
   )
 }
@@ -54,7 +50,6 @@ export async function getStaticProps(){
 
   try {
     const response = await axios.get(homeApi);
-    console.log(response.data);
     content = response.data;
     
   } catch(error){

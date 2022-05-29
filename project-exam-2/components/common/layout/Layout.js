@@ -7,7 +7,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 export default function Layout({children}){
     const router = useRouter();
     return (
@@ -52,32 +51,3 @@ export default function Layout({children}){
         </>
     )
 }
-
-
-
-
-// const { pathname } = document.location;
-
-// const adminLogin = a function;
-
-// let adminLink = `<Link href="/admin" className="${pathname === "/admin" ? "active" : ""}">Log Out</Link>`
-
-
-// export default function menu(){
-//     const { pathname } = document.location;
-
-//     const container = document.querySelector(".menu-container")
-
-//     const username = getUser();
-
-//     let logInLink = `<a href="login.html" class ="${pathname === "/login.html" ? "active" : ""}">Log in <a/>`;
-
-//     if(username){
-//         logInLink = `<span> Welcome ${username}!</span>`;
-//     }
-
-//     container.innerHTML = `<div class="menu">
-//                                 <a href="/" class="${pathname === "/" ? "active" : ""}">Home</a>
-//                                 ${logInLink}
-//                             </div>`
-// }

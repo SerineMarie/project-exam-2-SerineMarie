@@ -14,31 +14,31 @@ export default function Accomodations(props){
       <Head title="Accomodations"/>
       <div className={styles.container}>
         <Heading title="Accomodations"/>
-        {props.accomodations.data.map((hotel)=>{
-          console.log(hotel);
-
-          let imageUrl = "http://placehold.jp/fafafa/0016ff/150x150.png?text=No%20image";
-          if(hotel.attributes.images.data){
-            imageUrl = hotel.attributes.images.data[0].attributes.url;
-          }
-          
-          return(
-            <div key={hotel.slug} className={styles.accomodationsCard}>
-              <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.accomodationsContent}>
-                <img src={imageUrl} className={styles.images}></img>
-                <div>
-                  <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
-                  <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
-                  <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
-                </div>
-              </a>
-              <div className={styles.bottomContainer}>
-                <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
-                <button key={hotel.id} onClick={() => router.push('/booking')} className={styles.bookBtn}>BOOK NOW</button>
+        <div className={styles.accomodationsContainer}>
+          {props.accomodations.data.map((hotel)=>{
+            let imageUrl = "http://placehold.jp/fafafa/0016ff/150x150.png?text=No%20image";
+            if(hotel.attributes.images.data){
+              imageUrl = hotel.attributes.images.data[0].attributes.url;
+            }
+            return(
+                <div key={hotel.slug} className={styles.accomodationsCard}>
+                  <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.accomodationsContent}>
+                    <img src={imageUrl} className={styles.images}></img>
+                    <div>
+                      <h2 className={styles.subTitle}>{hotel.attributes.name}</h2>
+                      <p className={styles.location} key={hotel.attributes.id}>{hotel.attributes.location}</p>
+                      <p className={styles.excerpt} key={hotel.attributes.id}>{hotel.attributes.excerpt}</p>
+                      <a href={`/accomodation/${hotel.attributes.slug}`} className={styles.readMoreBtn}>Read more...</a>
+                    </div>
+                  </a>
+                  <div className={styles.bottomContainer}>
+                    <p className={styles.price} key={hotel.attributes.id}>Price from: ${hotel.attributes.price}</p>
+                    <button key={hotel.id} onClick={() => router.push('/booking')} className={styles.bookBtn}>BOOK NOW</button>
+                  </div>
               </div>
-          </div>
-         );
-      })}
+            );
+          })}
+        </div>
       </div>
     </Layout>
   )
@@ -50,7 +50,6 @@ export async function getStaticProps(){
 
   try {
     const response = await axios.get(accomodationsApi)
-    console.log(response.data);
     accomodations = response.data
   } catch(error){
     DisplayMessage(`An error occured`, {error})

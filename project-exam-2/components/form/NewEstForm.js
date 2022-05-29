@@ -8,7 +8,7 @@ import styles from "../../styles/Home.module.scss";
 import { getToken } from "../../utils/storage";
 
 const schema = yup.object().shape({
-    hotelname: yup.string().required("Please enter name of hotel").min(3, "Please enter at least 3 characters"),
+    name: yup.string().required("Please enter name of hotel").min(3, "Please enter at least 3 characters"),
     location: yup.string().required("Please enter hotel address").min(5, "Please enter at least 5 characters"),
     images: yup.mixed().required("Please provide a file"),
     excerpt: yup.string().required("Please enter exerpt of hotel").min(10, "Please enter at least 10 characters"),
@@ -17,12 +17,11 @@ const schema = yup.object().shape({
     slug: yup.string().required("Enter name of hotel with no captial letters and no space").min(3, "Please enter at least 3 characters"),
 });
 
-
 export default function NewEstForm(){
-    const url = BASE_URL + "/hotels?populate=*";
+    const url = BASE_URL + "/hotels";
     const [submitting, setSubmitting] = useState(false);
+    const [formError, setFormError] = useState(false);
     const [formSendt, setFormSendt] = useState(false);
-
 
     const {
         register, 
@@ -31,62 +30,53 @@ export default function NewEstForm(){
     } = useForm({
         resolver: yupResolver(schema),
     });
-
-    
+   
     async function onSubmit(data, e){
         const token = getToken();
         setSubmitting(true);
-        console.log(data);
 
         const formData = new FormData();
-        
-        if(images.files.length === 0){
-            return alert("Please add an image")
-        }
-        const file = images.files[0];
+        const file = data.images[0];
         const newHotel = {
-            "data":{
-                "name": data.hotelname,
-                "location": data.location,
-                "price": data.price,
-                "excerpt": data.excerpt,
-                "slug": data.slug,
-                "description": data.description,
-                "images": data.images
-            }
-        }
-        const header = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }         
-        }
-        formData.append("files.image", file, file.name)
-        formData.append("data", JSON.stringify(data));
+            name: data.name,
+            location: data.location,
+            price: data.price,
+            excerpt: data.excerpt,
+            slug: data.slug,
+            description: data.description
+        };
+
+        formData.append("files.images", file, file.name);
+        formData.append("data", JSON.stringify(newHotel))
     
         try{
-            const response = await axios.post(url, newHotel, formData, header);
-            console.log(response)
-    
+            const response = await axios({
+                url: url,
+                method: "POST",
+                data: formData,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setFormSendt("New establishment created!")
         } catch(error){
             console.log(error)
             e.target.reset();
-            setSubmitting("Incorrect credentials");
+            setFormError("Incorrect credentials");
         } finally{
-            setFormSendt("New establishment created!")
-            setSubmitting(true);
             e.target.reset();
-
+            setSubmitting(false);
         }
     }
 
     return(
         <>
-            {submitting && <div className={styles.formError}>{submitting}</div>}
+            {formError && <div className={styles.formError}>{formError}</div>}
             {formSendt && <div className={styles.formValidated}>{formSendt}</div>}
             <form onSubmit={handleSubmit(onSubmit)} className={styles.newEstForm} disabled={submitting}>
                 <div className={styles.hotelName}>
                     <p>Hotel name</p>
-                    <input {...register("hotelname")} placeholder="Hotelname" className={styles.formInput}/>
+                    <input {...register("name")} placeholder="Hotelname" className={styles.formInput}/>
                     {errors.hotelname && <span className={styles.inputError}>{errors.hotelname.message}</span>}
                 </div>
                 <div className={styles.location}>
@@ -101,7 +91,7 @@ export default function NewEstForm(){
                 </div>
                 <div className={styles.excerpt}>
                     <p>Hotel excerpt</p>
-                    <input {...register("excerpt")} placeholder="Hotel excerpt" className={styles.formInput}/>
+                    <textarea {...register("excerpt")} placeholder="Hotel excerpt" className={styles.formInput}/>
                     {errors.excerpt && <span className={styles.inputError}>{errors.excerpt.message}</span>}
                 </div>
                 <div className={styles.price}>
@@ -123,5 +113,4 @@ export default function NewEstForm(){
             </form>
         </>
     )
-   
 }

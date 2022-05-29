@@ -1,7 +1,3 @@
-.container{
-    margin: auto;
-    width: 80%;
-}
 .accomodationsCard{
     border: 2px solid getColor(black);
     border-radius: 5px;
@@ -17,6 +13,12 @@
         padding: 2%;
         cursor: pointer;
     }
+    .readMoreBtn {
+        font-size: 1.32rem;
+        font-weight: 300;
+        color: getColor(black);
+        text-decoration: underline;
+    }
 }
 .accomodationsContent {
     text-decoration: none;
@@ -24,6 +26,13 @@
 }
 
 @media (min-width: 821px){
+
+    .accomodationsContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .accomodationsCard{
         margin: 0 0 1rem 0;
         width: 75%;

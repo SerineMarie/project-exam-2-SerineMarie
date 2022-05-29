@@ -9,7 +9,6 @@ import { clearStorage } from "../../../utils/storage";
 
 export default function AdminLayout({children}){
     const router = useRouter();
-  
     return (
         <>
             <div className="wrapper">
@@ -27,7 +26,7 @@ export default function AdminLayout({children}){
                                 <a className={styles.logo}><Logo/></a>
                             </Link>
                             <Link href="/adminBooking">
-                                <a className={router.pathname == "/adminBooking" ? "active" : ""}>Enquiries</a>
+                                <a className={router.pathname == "/adminBooking" ? "active" : ""}>Bookings</a>
                             </Link>
                             <Link href="/adminContact">
                                 <a className={router.pathname == "/adminContact" ? "active" : ""}>Messages</a>

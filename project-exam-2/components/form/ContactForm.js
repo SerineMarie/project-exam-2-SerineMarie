@@ -6,7 +6,6 @@ import { BASE_URL} from "../../constans/api";
 import styles from "../../styles/Home.module.scss";
 import axios from "axios";
 
-
 const schema = yup.object().shape({
     fullname: yup.string().required("Please enter your full name").min(3, "There must be at least three characters"),
     email: yup.string().required("Please enter your email address").email("Email address not valid"),
@@ -20,8 +19,6 @@ export default function ContactForm (){
     const [formError, setFormError] = useState(false);
     const [formSendt, setFormSendt] = useState(false);
 
-
-
     const {
         register, 
         handleSubmit,  
@@ -30,9 +27,7 @@ export default function ContactForm (){
         resolver: yupResolver(schema),
     });
 
-
     async function onSubmit(data, e){
-        console.log(data);
         setSubmitting(true);
 
         const credentials = {
@@ -45,7 +40,6 @@ export default function ContactForm (){
         }
         try{
             const response = await axios.post(contactUrl, credentials)
-            console.log(response)
         } catch(error){
             console.log(error);
             setFormError("Incorrect credentials")

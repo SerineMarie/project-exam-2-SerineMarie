@@ -1,6 +1,7 @@
 .contactForm,
 .bookingForm,
-.loginForm, .newEstForm {
+.loginForm, 
+.newEstForm {
     margin: auto;
     width: 70%;
     p {
@@ -137,6 +138,9 @@
     .contactForm,
     .bookingForm,
     .newEstForm{
+        width: 70%;
+        justify-content: center;
+        align-items: center;
         display: grid;
         grid-template-columns: 30% 30%;
         grid-template-rows: auto;

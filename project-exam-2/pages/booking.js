@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { useRouter } from "next/router";
 import Head from "../components/common/head/Head";
 import Heading from "../components/common/heading/Heading";
 import Layout from "../components/common/layout/Layout";
@@ -11,10 +10,6 @@ import DisplayMessage from "../components/common/displayMessage/DisplayMessage";
 
 
 export default function Booking (props){
-    console.log(props);
-    // const router = useRouter();
-    // const {id} = router.query;
-    // console.log(id)
     return(
         <Layout>
             <Head title="Booking"/>
@@ -31,7 +26,6 @@ export async function getStaticProps(){
     let bookingpage = [];
     try{
         const response = await axios.get(bookingApi);
-        console.log(response.data);
         bookingpage = response.data;
     } catch(error){
         DisplayMessage(`An error occured`, {error})
