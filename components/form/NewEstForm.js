@@ -18,7 +18,7 @@ const schema = yup.object().shape({
 });
 
 export default function NewEstForm(){
-    const url = BASE_URL + "/hotels";
+    const newEstUrl = BASE_URL + "/hotels";
     const [submitting, setSubmitting] = useState(false);
     const [formError, setFormError] = useState(false);
     const [formSendt, setFormSendt] = useState(false);
@@ -51,7 +51,7 @@ export default function NewEstForm(){
     
         try{
             const response = await axios({
-                url: url,
+                url: newEstUrl,
                 method: "POST",
                 data: formData,
                 headers: {
