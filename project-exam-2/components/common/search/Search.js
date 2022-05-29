@@ -2,8 +2,10 @@ import axios from "axios";
 import styles from "../../../styles/Home.module.scss";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constans/api";
+// import { useRouter } from "next/router";
 
 const searchAPI = BASE_URL + "/hotels?populate=*";
+// const router = useRouter();
 
 export default function SearchBar(){
     const [searchHotel, setSearchHotel] = useState([]);
@@ -37,20 +39,16 @@ export default function SearchBar(){
             <input type="text" placeholder="Search..." 
                 className={styles.search} 
                 onChange={e=>onChangeEvent(e.target.value)} 
-                value={inputValue} 
-                onBlur={()=> {
-                    setTimeout(() => {
-                        setAlternative([])
-                    },100)
-                }}>
+                value={inputValue}>
             </input>
             <a className={styles.alternativeContainer}>
                 {alternative && alternative.map((alternative, i) => 
                 <div>
-                    <a href={`hotel/${alternative.attributes.slug}`} 
+                    <a href={`accomodation/${alternative.attributes.slug}`} 
                     className={styles.searchResults} 
                     key={i} 
-                    onClick={()=>onAlternativeEvent(alternative.attributes.name)}>
+                    onClick={()=>onAlternativeEvent(alternative.attributes.name)}
+                    >
                         {alternative.attributes.name}
                     </a>
                 </div>
