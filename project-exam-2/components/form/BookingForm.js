@@ -11,6 +11,8 @@ import axios from "axios";
 const schema = yup.object().shape({
     fullname: yup.string().required("Please enter your full name"),
     howMany: yup.string().required("Please choose how many people"),
+    // checkIn: yup.date().required("Please enter check in date"),
+    // checkOut: yup.date().required("Please enter check out date"),
     message: yup.string(),
 });
 
@@ -33,7 +35,6 @@ export default function BookingForm(){
         resolver: yupResolver(schema),
     });
 
-
     async function onSubmit(data, e){
         setSubmitting(true);
 
@@ -54,6 +55,7 @@ export default function BookingForm(){
         try{
             const response = await axios.post(bookingUrl, bookingDetails, header)
             setFormSendt("Booking sendt")
+            console.log(response)
         }catch(error){
             console.log(error);
             setFormError("Incorrect credentials");
@@ -90,6 +92,7 @@ export default function BookingForm(){
                     <p>Check In</p>
                     <div>
                         <DatePicker wrapperClassName={styles.datePicker}
+                        {...register("checkIn")}
                             selected= {startDate} 
                             selectsStart
                             startDate={startDate}
@@ -102,6 +105,7 @@ export default function BookingForm(){
                     <p>Check Out</p>
                     <div>
                         <DatePicker wrapperClassName={styles.datePicker}
+                        {...register("checkOut")}
                             selected= {endDate} 
                             selectsEnd
                             startDate={startDate}
